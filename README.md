@@ -14,6 +14,6 @@ It will be able to show, search, add, edit/update, and delete the details of the
 
 ## Requirements
 - Programming Language: C++
-- Data Structure: Linked List, 
+- Data Structure: Linked List
 - Interactivity: Menu Driven
 - Database: File Handling 

@@ -1,5 +1,4 @@
-# Player-Database: A Record Management System
-Player Database For ICC Menz Cricket World Cup 2023
+# Player-Database For ICC Menz Cricket World Cup 2023
 
 ## Objective
 An application to store the details of the players participating in the ICC Menz Cricket World Cup 2023. 

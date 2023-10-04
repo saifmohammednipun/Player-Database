@@ -1,4 +1,4 @@
-# Player Database For ICC Menz Cricket World Cup 2023
+# Player Database For ICC Men's Cricket World Cup 2023
 
 ## Objective
 An application to store the details of the players participating in the ICC Menz Cricket World Cup 2023. 
@@ -15,4 +15,4 @@ It will be able to show, search, add, edit/update, and delete the details of the
 - Programming Language: C++
 - Data Structure: Linked List
 - Interactivity: Menu Driven
-- Database: File Handling 
+- Database: File Handling

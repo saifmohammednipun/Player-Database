@@ -1,1 +1,2 @@
-# Player-Database-For-ICC-Menz-Cricket-World-Cup-2023
+# Player-Database
+Player Database For ICC Menz Cricket World Cup 2023

@@ -1,0 +1,56 @@
+Country,Player Name,Date of Birth,Role,Batting Style,Bowling Style,Matches Played,Runs Scored,Wickets Taken,Catches Taken,Batting Average,Bowling Average,Strike Rate
+India,Virat Kohli,5/11/88,Batsman,Right-Handed,Right-Arm Medium,140,"15,000",15,60,51.72,63.33,90
+India,Rohit Sharma,30/4/87,Batsman,Right-Handed,Right-Arm Off-Spin,145,"14,000",3,50,96.55,1050,87
+India,Jasprit Bumrah,6/12/93,Bowler,Right-Handed,Right-Arm Fast,110,"6,000",180,20,54.55,33.33,95
+India,Ravindra Jadeja,6/12/88,All-Rounder,Left-Handed,Left-Arm Spin,125,"5,000",90,35,40,55.56,85
+India,KL Rahul,18/4/92,Batsman,Right-Handed,Right-Arm Medium,85,"4,000",2,40,47.06,2000,80
+England,Joe Root,30/12/90,Batsman,Right-Handed,Right-Arm Off-Spin,120,"11,000",20,45,91.67,105,80
+England,Ben Stokes,4/6/91,All-Rounder,Left-Handed,Right-Arm Medium-Fast,115,"7,000",90,30,60.87,55.56,120
+England,Jofra Archer,1/4/95,Bowler,Right-Handed,Right-Arm Fast,95,"1,500",160,15,15.79,9.38,80
+England,Jonny Bairstow,26/9/89,Wicketkeeper-Batsman,Right-Handed,Right-Arm Medium,105,"5,000",5,50,47.62,80,100
+England,Eoin Morgan,10/9/86,Batsman,Left-Handed,Right-Arm Medium,130,"7,500",10,40,60,63,85
+Australia,Steve Smith,2/6/89,Batsman,Right-Handed,Right-Arm Leg-Spin,125,"9,500",40,50,76,103.75,86
+Australia,David Warner,27/10/86,Batsman,Left-Handed,Right-Arm Medium,120,"9,500",0,30,79.17,-,75
+Australia,Pat Cummins,8/5/93,Bowler,Right-Handed,Right-Arm Fast,105,"1,200",180,10,12,6.67,90
+Australia,Mitchell Starc,30/1/90,Bowler,Left-Handed,Left-Arm Fast,115,"1,000",200,20,8.7,5,95
+Australia,Glenn Maxwell,14/10/88,All-Rounder,Right-Handed,Right-Arm Off-Spin,110,"3,000",70,40,27.27,31.43,120
+New Zealand,Kane Williamson,8/8/90,Batsman,Right-Handed,Right-Arm Medium,125,"8,000",20,30,64,61,75
+New Zealand,Trent Boult,22/7/89,Bowler,Right-Handed,Left-Arm Fast-Medium,105,600,130,15,6,4.62,80
+New Zealand,Ross Taylor,8/3/84,Batsman,Right-Handed,Right-Arm Medium,135,"7,800",5,40,57.78,28.6,75
+New Zealand,Martin Guptill,30/9/86,Batsman,Right-Handed,Right-Arm Medium,120,"6,500",0,25,54.17,-,80
+New Zealand,Lockie Ferguson,13/6/91,Bowler,Right-Handed,Right-Arm Fast,95,300,110,20,4.29,10,120
+South Africa,Quinton de Kock,17/12/92,Wicketkeeper-Batsman,Left-Handed,Right-Arm Medium,120,"5,500",0,50,45.83,-,95
+South Africa,Kagiso Rabada,25/5/95,Bowler,Right-Handed,Right-Arm Fast,110,400,200,10,3.64,2,85
+South Africa,Hashim Amla,31/3/83,Batsman,Right-Handed,Right-Arm Medium,125,"9,000",15,25,72,26.67,85
+South Africa,Imran Tahir,27/3/79,Bowler,Right-Handed,Leg-Spin,105,150,150,25,1.43,1,95
+South Africa,Faf du Plessis,13/7/84,Batsman,Right-Handed,Right-Arm Leg-Spin,120,"6,500",20,35,54.17,2.5,80
+Pakistan,Babar Azam,15/10/94,Batsman,Right-Handed,Right-Arm Medium,125,"7,000",10,30,56,36,90
+Pakistan,Shaheen Afridi,6/4/00,Bowler,Left-Handed,Left-Arm Fast,90,500,160,15,5.56,3.13,85
+Pakistan,Mohammad Rizwan,1/6/92,Wicketkeeper-Batsman,Right-Handed,Right-Arm Medium,105,"3,000",0,35,28.57,-,85
+Pakistan,Shadab Khan,4/10/98,All-Rounder,Right-Handed,Leg-Spin,100,"2,000",60,25,20,26.67,90
+Pakistan,Imam-ul-Haq,12/12/95,Batsman,Left-Handed,Right-Arm Medium,80,"2,500",0,20,31.25,-,80
+West Indies,Kieron Pollard,12/5/87,All-Rounder,Right-Handed,Right-Arm Medium-Fast,130,"4,000",90,30,26.67,30.56,110
+West Indies,Chris Gayle,21/9/79,Batsman,Left-Handed,Right-Arm Off-Spin,140,"12,000",60,15,85.71,13.33,130
+West Indies,Andre Russell,29/4/88,All-Rounder,Right-Handed,Right-Arm Fast,110,"3,500",100,35,23.33,24,140
+West Indies,Shai Hope,10/11/93,Wicketkeeper-Batsman,Right-Handed,Right-Arm Medium,100,"3,500",0,45,35,-,80
+West Indies,Sheldon Cottrell,19/8/89,Bowler,Left-Handed,Left-Arm Fast,85,200,130,20,2.35,1.54,100
+Sri Lanka,Kusal Perera,17/8/90,Wicketkeeper-Batsman,Left-Handed,Right-Arm Medium,110,"3,000",0,35,27.27,-,85
+Sri Lanka,Dimuth Karunaratne,21/4/88,Batsman,Left-Handed,Right-Arm Medium,120,"4,500",10,25,37.5,20,70
+Sri Lanka,Dushmantha Chameera,11/1/92,Bowler,Right-Handed,Right-Arm Fast,95,400,90,15,4.21,4.44,70
+Sri Lanka,Angelo Mathews,2/6/87,All-Rounder,Right-Handed,Right-Arm Fast-Medium,105,"3,000",70,30,28.57,33.33,85
+Sri Lanka,Kusal Mendis,2/2/95,Batsman,Right-Handed,Right-Arm Medium,90,"2,500",0,20,27.78,-,70
+Bangladesh,Mushfiqur Rahim,9/5/87,Wicketkeeper-Batsman,Right-Handed,Right-Arm Medium,115,"4,500",0,35,39.13,-,80
+Bangladesh,Tamim Iqbal,20/3/89,Batsman,Left-Handed,Right-Arm Medium,125,"5,500",10,30,44,33,90
+Bangladesh,Shakib Al Hasan,24/3/87,All-Rounder,Left-Handed,Left-Arm Spin,130,"4,000",90,25,30.77,26.67,100
+Bangladesh,Mehidy Hasan,25/10/97,Bowler,Right-Handed,Off-Spin,95,"1,200",50,15,12,4,80
+Bangladesh,Mohammad Saifuddin,1/12/96,All-Rounder,Right-Handed,Right-Arm Medium-Fast,90,800,40,10,16,20,110
+Afghanistan,Rashid Khan,20/9/98,Bowler,Right-Handed,Leg-Spin,85,600,120,10,7.06,6.25,70
+Afghanistan,Asghar Afghan,22/2/87,Batsman,Right-Handed,Right-Arm Medium,95,"2,500",10,15,26.32,16.67,80
+Afghanistan,Mujeeb Ur Rahman,28/3/01,Bowler,Right-Handed,Off-Spin,80,300,90,5,3.75,6.25,75
+Afghanistan,Hashmatullah Shahidi,28/11/94,Batsman,Left-Handed,Right-Arm Medium,90,"2,000",0,10,22.22,-,75
+Afghanistan,Rahmanullah Gurbaz,22/6/01,Wicketkeeper-Batsman,Right-Handed,Right-Arm Medium,80,"1,500",0,5,18.75,-,90
+Zimbabwe,Brendan Taylor,6/2/86,Wicketkeeper-Batsman,Right-Handed,Right-Arm Medium,95,"3,000",0,20,31.58,-,85
+Zimbabwe,Sean Williams,26/9/86,All-Rounder,Left-Handed,Left-Arm Spin,90,"2,500",60,15,27.78,16.67,105
+Zimbabwe,Tendai Chatara,28/2/90,Bowler,Right-Handed,Right-Arm Fast-Medium,85,600,80,10,7.06,9.38,85
+Zimbabwe,Craig Ervine,19/8/85,Batsman,Left-Handed,Right-Arm Medium,80,"1,500",0,10,18.75,-,75
+Zimbabwe,Wesley Madhevere,22/6/99,All-Rounder,Right-Handed,Right-Arm Medium-Fast,75,800,30,10,12.5,11.67,85

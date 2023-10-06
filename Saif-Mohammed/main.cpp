@@ -3,7 +3,7 @@ using namespace std;
 
 class Node
 {
-    public: 
+    public:
         int key;
         Node* next;
 
@@ -18,7 +18,7 @@ class Node
         this->key = key;
         this->next = NULL;
     }
-    
+
     ~Node(){};
 
 };
@@ -40,10 +40,11 @@ public:
     int runs_scored;
     int wickets_taken;
     int catches_taken;
-    int batting_average;
-    int bowling_average;
+    float batting_average;
+    float bowling_average;
     int strike_rate;
-
+   
+ 
     player( string country,
             string payer_name,
             string date_of_birth,
@@ -55,8 +56,8 @@ public:
             int runs_scored,
             int wickets_taken,
             int catches_taken,
-            int batting_average,
-            int bowling_average,
+            float batting_average,
+            float bowling_average,
             int strike_rate
             )
     {
@@ -74,22 +75,23 @@ public:
         this->batting_average = batting_average;
         this->bowling_average = bowling_average;
         this->strike_rate = strike_rate;
-        
+
     }
 };
 
 void printPlayerData()
 {
-  
+
    ifstream inputFile;
    inputFile.open("/Users/saifmohammed/Desktop/Player-Database/Player-Database-CWC-2023.csv");
+
 
    if(inputFile.fail())
    {
        cout << "Error opening file" << endl;
         exit(1);
    }
-    
+
     string country;
     string payer_name;
     string date_of_birth;
@@ -101,55 +103,86 @@ void printPlayerData()
     int runs_scored;
     int wickets_taken;
     int catches_taken;
-    int batting_average;
-    int bowling_average;
+    float batting_average;
+    float bowling_average;
     int strike_rate;
-    
+
     string myString;
     string line;
 
-
+    int count = 0;
     while(getline(inputFile, line))
     {
-        try{
-        stringstream ss(line);
-        getline(ss,country, ',');
-        getline(ss,payer_name, ',');
-        
-        getline(ss,date_of_birth, ',');
-        //date_of_birth = date_of_birth.substr(0,2)+date_of_birth.substr(3,4)+date_of_birth.substr(6,2);
-     
-        age = stoi(myString);
-        getline(ss,role, ',');
-        getline(ss,batting_style, ',');
-        getline(ss,bowling_style, ',');
-        matches_played = stoi(myString);
-        runs_scored = stoi(myString);
-        wickets_taken = stoi(myString);
-        catches_taken = stoi(myString);
-        batting_average = stoi(myString);
-        bowling_average = stoi(myString);
-        strike_rate = stoi(myString);
-        }
-        catch(exception e)
-        {
-        }
-     
 
-        cout <<country +"\t"+
-            payer_name + "\t"+
-            date_of_birth + "\t" +
-            to_string(age) + "\t"+
-            role + "\t"+
-            batting_style + "\t"+
-            bowling_style + "\t"+
-            to_string(matches_played) + "\t"+
-            to_string(runs_scored) + "\t"+ 
-            to_string(wickets_taken) + "\t"+
-            to_string(catches_taken) + "\t"+
-            to_string(batting_average) + "\t"+
-            to_string(bowling_average) + "\t"+
-            to_string(strike_rate) << endl;
+
+    try
+    {
+
+
+        stringstream ss(line);
+
+
+
+
+        getline(ss, country, ',');
+        getline(ss, payer_name, ',');
+        getline(ss, date_of_birth, ',');
+
+        getline(ss, myString, ',');
+        age = stoi(myString);
+
+        getline(ss, role, ',');
+        getline(ss, batting_style, ',');
+        getline(ss, bowling_style, ',');
+
+        getline(ss, myString, ',');
+        matches_played = stoi(myString);
+
+        getline(ss, myString, ',');
+        runs_scored = stoi(myString);
+
+        getline(ss, myString, ',');
+        wickets_taken = stoi(myString);
+
+        getline(ss, myString, ',');
+        catches_taken = stoi(myString);
+
+
+        getline(ss, myString, ',');
+        batting_average = (stof(myString));
+
+
+
+        getline(ss, myString, ',');
+        bowling_average =  stof((myString));
+
+        getline(ss, myString, ',');
+        strike_rate = stoi(myString);
+
+
+    }
+    catch (exception e)
+    {
+    }
+            if(count >= 1){
+                cout << country << "\t"
+             << payer_name << "\t"
+             << date_of_birth << "\t"
+             << age << "\t"
+             << role << "\t"
+             << batting_style << "\t"
+             << bowling_style << "\t"
+             << matches_played << "\t"
+             << runs_scored << "\t"
+             << wickets_taken << "\t"
+             << catches_taken << "\t";
+
+            cout << fixed << setprecision(2); // Set precision to 2 decimal places for floating-point numbers
+            cout << batting_average << "\t" << bowling_average << "\t" << strike_rate << endl;
+
+            }
+
+        count++;
     }
 }
 

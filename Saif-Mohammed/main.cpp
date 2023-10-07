@@ -167,9 +167,10 @@ void printPlayerData()
                   << wickets_taken << "\t"
                   << catches_taken << "\t";
 
-            cout << fixed << setprecision(2); // Set precision to 2 decimal places for floating-point numbers
-            cout << batting_average << "\t" << bowling_average << "\t" << strike_rate << endl;
-
+            cout << fixed << setprecision(2);
+            cout << batting_average << "\t" 
+                 << bowling_average << "\t" 
+                 << strike_rate << endl;
             }
 
         count++;

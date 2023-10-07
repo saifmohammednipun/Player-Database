@@ -1,34 +1,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node
-{
-    public:
-        int key;
-        Node* next;
-
-    Node()
-    {
-        this->key = 0;
-        this->next = NULL;
-    }
-
-    Node(int key)
-    {
-        this->key = key;
-        this->next = NULL;
-    }
-
-    ~Node(){};
-
-};
-
-Node* head = NULL;
-Node* cur = NULL;
-
-class player
+class Player
 {
 public:
+    int player_id;
     string country;
     string payer_name;
     string date_of_birth;
@@ -43,9 +19,12 @@ public:
     float batting_average;
     float bowling_average;
     int strike_rate;
+    
+    Player *next;
    
  
-    player( string country,
+    Player( int player_id,
+            string country,
             string payer_name,
             string date_of_birth,
             int age,
@@ -58,9 +37,9 @@ public:
             int catches_taken,
             float batting_average,
             float bowling_average,
-            int strike_rate
-            )
+            int strike_rate )
     {
+        this->player_id = player_id;
         this->country = country;
         this->payer_name = payer_name;
         this->date_of_birth = date_of_birth;
@@ -75,6 +54,8 @@ public:
         this->batting_average = batting_average;
         this->bowling_average = bowling_average;
         this->strike_rate = strike_rate;
+
+        this->next = NULL;
 
     }
 };
@@ -91,6 +72,7 @@ void printPlayerData()
         exit(1);
    }
 
+    int player_id;
     string country;
     string payer_name;
     string date_of_birth;
@@ -116,6 +98,10 @@ void printPlayerData()
      try
         {
             stringstream ss(line);
+
+            getline(ss, myString, ',');
+            player_id = stoi(myString);
+
             getline(ss, country, ',');
             getline(ss, payer_name, ',');
             getline(ss, date_of_birth, ',');
@@ -139,11 +125,8 @@ void printPlayerData()
             getline(ss, myString, ',');
             catches_taken = stoi(myString);
 
-
             getline(ss, myString, ',');
             batting_average = (stof(myString));
-
-
 
             getline(ss, myString, ',');
             bowling_average =  stof((myString));
@@ -155,7 +138,8 @@ void printPlayerData()
 
             if(count >= 1)
             {
-             cout << country << "\t"
+             cout << player_id << "\t"
+                  << country << "\t"
                   << payer_name << "\t"
                   << date_of_birth << "\t"
                   << age << "\t"
@@ -172,14 +156,60 @@ void printPlayerData()
                  << bowling_average << "\t" 
                  << strike_rate << endl;
             }
-
+            
         count++;
     }
 }
 
+bool verifyLogin(string admin_username, string admin_password)
+{
+    string username;
+    string password;
+    ifstream inputFile;
+
+   inputFile.open("/Users/saifmohammed/Desktop/Player-Database/Player-Database-CWC-2023.csv");
+
+   if(inputFile.fail())
+   {
+       cout << "Error opening file" << endl;
+        exit(1);
+   }
+
+   string line;
+    string record = username + "," + password;
+
+    while(getline(inputFile, line))
+    {
+        if(line == record)
+        {
+            return true;
+        }
+    }
+
+    
+    return false;
+
+}
+
 int main()
 {
-    printPlayerData();
+    string admin_username;  
+    string admin_password;
+    
+    cout<<"Admin Login"<<endl;
+    cout<<"Admin Username: ";
+    getline(cin, admin_username);
+    cout<<"Admin Password: ";
+    getline(cin, admin_username);
 
-    return 0;
+    verifyLogin(admin_username, admin_password);
+    
+    if(verifyLogin(admin_username, admin_password))
+    {
+        cout<<"Login Successful"<<endl;
+    }
+    else
+    {
+        cout<<"Login Failed"<<endl;
+    }
 }

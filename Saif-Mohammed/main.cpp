@@ -161,55 +161,47 @@ void printPlayerData()
     }
 }
 
-bool verifyLogin(string admin_username, string admin_password)
-{
-    string username;
-    string password;
-    ifstream inputFile;
+// bool login(const string& username, const string& password) {
+//     ifstream file("Admin.txt");
 
-   inputFile.open("/Users/saifmohammed/Desktop/Player-Database/Player-Database-CWC-2023.csv");
+//     if (!file) {
+//         cerr << "Error opening user_data.txt" << endl;
+//         return false;
+//     }
 
-   if(inputFile.fail())
-   {
-       cout << "Error opening file" << endl;
-        exit(1);
-   }
+//     string storedUsername;
+//     string storedPassword;
 
-   string line;
-    string record = username + "," + password;
+//     while (file.eof() == false  ) {
+//         file >> storedUsername >> storedPassword;
+//         if (storedUsername == username && storedPassword == password) {
+//             return true;
+//         }
+//     }
 
-    while(getline(inputFile, line))
-    {
-        if(line == record)
-        {
-            return true;
-        }
-    }
+//     return false;
+// }
 
-    
-    return false;
 
-}
+
 
 int main()
 {
-    string admin_username;  
-    string admin_password;
-    
-    cout<<"Admin Login"<<endl;
-    cout<<"Admin Username: ";
-    getline(cin, admin_username);
-    cout<<"Admin Password: ";
-    getline(cin, admin_username);
+    //  string username, password;
 
-    verifyLogin(admin_username, admin_password);
-    
-    if(verifyLogin(admin_username, admin_password))
-    {
-        cout<<"Login Successful"<<endl;
-    }
-    else
-    {
-        cout<<"Login Failed"<<endl;
-    }
+    // cout << "Please enter your username: ";
+    // cin >> username;
+
+    // cout << "Please enter your password: ";
+    // cin >> password;
+
+    // if (login(username, password)) {
+    //     cout << "Login successful!" << endl;
+    // } else {
+    //     cout << "Login failed. Incorrect username or password." << endl;
+    // }
+
+    printPlayerData();
+
+    return 0;
 }

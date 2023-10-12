@@ -60,7 +60,7 @@ public:
     }
 };
 
-void printPlayerData()
+void showPlayerData()
 {
 
    ifstream inputFile;
@@ -160,45 +160,46 @@ void printPlayerData()
         count++;
     }
 }
+  void searchPlayerData(){}
+  void updatePlayerData(){}
+  void addPlayerData(){}
+  void editPlayerData(){}
+  void deletePlayerData(){}
 
-// bool login(const string& username, const string& password) {
-//     ifstream file("Admin.txt");
-
-//     if (!file) {
-//         cerr << "Error opening user_data.txt" << endl;
-//         return false;
-//     }
-
-//     string storedUsername;
-//     string storedPassword;
-
-//     while (file.eof() == false  ) {
-//         file >> storedUsername >> storedPassword;
-//         if (storedUsername == username && storedPassword == password) {
-//             return true;
-//         }
-//     }
-
-//     return false;
-// }
 int main()
 {
-    //  string username, password;
+        
+    while(true)
+    {
+       
+        cout << "\tPlayer Database For Cricket World Cup 2023"<<endl<<endl;
+        
+        cout << "\tMain Menu"<<endl;
+        cout << "\t1. Show Cricketer List"<<endl;
+        cout << "\t2. Add Crickter Information"<<endl;
+        cout << "\t3. Update Crickter Information"<<endl;
+        cout << "\t4. Delete Crickter Information"<<endl;
+        cout << "\t5. Search Crickter Information"<<endl;
+        cout << "\t0. Exit"<<endl<<endl;
 
-    // cout << "Please enter your username: ";
-    // cin >> username;
+        cout << "\tEnter Instruction: ";
+        int input; 
+        cin >> input;
+            
 
-    // cout << "Please enter your password: ";
-    // cin >> password;
+        switch(input)
+        {
+            case 1: showPlayerData(); break;
+            case 2: searchPlayerData(); break;
+            case 3: updatePlayerData(); break;
+            case 4: addPlayerData(); break;
+            case 5: editPlayerData(); break;
+            case 6: deletePlayerData(); break;
+            case 0: cout<<"\tSystem Exited Successfully"; exit(0);
 
-    // if (login(username, password)) {
-    //     cout << "Login successful!" << endl;
-    // } else {
-    //     cout << "Login failed. Incorrect username or password." << endl;
-    // }
+        }
 
-    printPlayerData();
-
-
+    }
+    
     return 0;
 }

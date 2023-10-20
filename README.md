@@ -1,15 +1,14 @@
 # Player Database For ICC Men's Cricket World Cup 2023
 
 ## Objective
-An application to store the details of the players participating in the ICC Menz Cricket World Cup 2023. 
-It will be able to show, search, add, edit/update, and delete the details of the players.
+Create an application that will be able to show, search, add, modify, 
+delete player's information who are taking part in the World Cup 2023.
 
-## Features
-- Show Player
-- Search Player
-- Add Player
-- Edit/Update Player
-- Delete Player
+## Features 
+- Interactive menu-based application
+- Can perform CRUD (Create-Read-Update-Delete) operations.
+- Initially, data must be read from a file.
+- Modified data should be saved in a file
 
 ## Requirements
 - Programming Language: C++

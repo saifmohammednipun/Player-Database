@@ -1,7 +1,7 @@
 # Player Database For ICC Men's Cricket World Cup 2023
 
 ## Objective
-Create an application that will be able to show, search, add, modify, 
+A console-based application which can show, search, add, modify, 
 delete player's information who are taking part in the World Cup 2023.
 
 ## Features 

@@ -59,6 +59,8 @@ public:
 
     }
 };
+Player *head = NULL;
+Player *tail = NULL;
 
 void showPlayerData()
 {
@@ -160,6 +162,83 @@ void showPlayerData()
         count++;
     }
 }
+
+void readFromFile(){
+   ifstream inputFile;
+   inputFile.open("/Users/saifmohammed/Desktop/Player-Database/Player-Database-CWC-2023.csv");
+
+   if(inputFile.fail())
+   {
+       cout << "Error opening file" << endl;
+        exit(1);
+   }
+
+    int player_id;
+    string country;
+    string payer_name;
+    string date_of_birth;
+    int age;
+    string role;
+    string batting_style;
+    string bowling_style;
+    int matches_played;
+    int runs_scored;
+    int wickets_taken;
+    int catches_taken;
+    float batting_average;
+    float bowling_average;
+    int strike_rate;
+
+    string myString;
+    string line;
+
+    int count = 0;
+    while(getline(inputFile, line))
+    {
+
+     try
+        {
+            stringstream ss(line);
+
+            getline(ss, myString, ',');
+            player_id = stoi(myString);
+
+            getline(ss, country, ',');
+            getline(ss, payer_name, ',');
+            getline(ss, date_of_birth, ',');
+
+            getline(ss, myString, ',');
+            age = stoi(myString);
+
+            getline(ss, role, ',');
+            getline(ss, batting_style, ',');
+            getline(ss, bowling_style, ',');
+
+            getline(ss, myString, ',');
+            matches_played = stoi(myString);
+
+            getline(ss, myString, ',');
+            runs_scored = stoi(myString);
+
+            getline(ss, myString, ',');
+            wickets_taken = stoi(myString);
+
+            getline(ss, myString, ',');
+            catches_taken = stoi(myString);
+
+            getline(ss, myString, ',');
+            batting_average = (stof(myString));
+
+            getline(ss, myString, ',');
+            bowling_average =  stof((myString));
+
+            getline(ss, myString, ',');
+            strike_rate = stoi(myString);
+    }
+    catch (exception e){}
+
+ }
+}
   void searchPlayerData(){}
   void updatePlayerData(){}
   void addPlayerData(){}
@@ -172,7 +251,7 @@ int main()
     while(true)
     {
        
-        cout << "\tPlayer Database For Cricket World Cup 2023"<<endl<<endl;
+        cout << "\tPlayer Database For ICC Men's Cricket World Cup 2023"<<endl<<endl;
         
         cout << "\tMain Menu"<<endl;
         cout << "\t1. Show Cricketer List"<<endl;
@@ -184,8 +263,7 @@ int main()
 
         cout << "\tEnter Instruction: ";
         int input; 
-        cin >> input;
-            
+        cin >> input; 
 
         switch(input)
         {

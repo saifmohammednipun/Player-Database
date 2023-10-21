@@ -68,18 +68,7 @@ void deletePlayerDatabase();
 void deletePlayerDataByPlayerID(int targetPlayerID);
 void deletePlayerDataByPlayerName(string targetPlayerName);
 void deletePlayerDataByCountry(string targetCountry);
-void deletePlayerDataByDateOfBirth(string targetDateOfBirth);
-void deletePlayerDataByAge(int targetAge);
-void deletePlayerDataByRole(string targetRole);
-void deletePlayerDataByBattingStyle(string targetBattingStyle);
-void deletePlayerDataByBowlingStyle(string targetBowlingStyle);
-void deletePlayerDataByMatchesPlayed(int targetMatchesPlayed);
-void deletePlayerDataByRunsScored(int targetRunsScored);
-void deletePlayerDataByWicketsTaken(int targetWicketsTaken);
-void deletePlayerDataByCatchesTaken(int targetCatchesTaken);
-void deletePlayerDataByBattingAverage(float targetBattingAverage);
-void deletePlayerDataByBowlingAverage(float targetBowlingAverage);
-void deletePlayerDataByStrikeRate(int targetStrikeRate);
+
 
 void deletePlayerDataFromFront(Player* head);
 void deletePlayerDataFromEnd(Player* tail);
@@ -278,9 +267,9 @@ int main()
             while(true)
             {
                 cout<<"\t\tAdd Cricketer Information"<<endl<<endl;
-                cout<<"\t1. Add Player Data at Front"<<endl;
-                cout<<"\t2. Add Player Data at End"<<endl;
-                cout<<"\t3. Add Player Data at Position"<<endl;
+                cout<<"\t1. Add New Player Data at Front"<<endl;
+                cout<<"\t2. Add New Player Data at End"<<endl;
+                cout<<"\t3. Add New Player Data at Position"<<endl;
                 cout<<"\t0. Return Main Menu"<<endl<<endl;
                 
                 cout<<"\tEnter Instruction: ";
@@ -293,7 +282,7 @@ int main()
                         if (newPlayer != NULL)
                         {
                             addNewPlayerDataAtFront(newPlayer, head);
-                            cout<<"Player Data Added Successfully at the Front"<<endl;
+                            cout<<"New Player Data Added Successfully at the Front"<<endl;
                         }
                         break;
                     }
@@ -303,7 +292,7 @@ int main()
                         if (newPlayer != NULL)
                         {
                             addNewPlayerDataAtEnd(newPlayer, tail);
-                            cout<<"Player Data Added Successfully at the End"<<endl;
+                            cout<<"New Player Data Added Successfully at the End"<<endl;
                         }
                         break;
                     }
@@ -401,6 +390,12 @@ int main()
                         cin >> position;
                         deletePlayerDataFromPosition(head, position);
                         cout<<"Player Data Deleted Successfully From "<<position<<" Position"<<endl;
+                        break;
+                    }
+                    case 7:
+                    {
+                        deletePlayerDatabase();
+                        cout<<"Player Database Deleted Successfully"<<endl;
                         break;
                     }
                     case 0: break;
@@ -1062,9 +1057,38 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         cout << "Enter Player ID: ";
                         int playerID;
                         cin >> playerID;
-                        current->player_id=playerID;
-                        break;
+
+                        while (true)
+                        {
+                            // Check if a player with the same ID already exists
+                            Player* current = head;
+                            bool isDuplicate = false;
+
+                            while (current != NULL)
+                            {
+                                if (current->player_id == playerID)
+                                {
+                                    isDuplicate = true;
+                                    cout << "A player with the same ID already exists." << endl;
+                                    break;
+                                }
+                                current = current->next;
+                            }
+
+                            if (!isDuplicate)
+                            {
+                                printPlayerData(current);
+                                cout << "Player with ID " << playerID << " updated successfully." << endl;
+                                // Add the player to your data structure here
+                                break;
+                            }
+
+                            // Ask the user to enter a new playerID if it's a duplicate
+                            cout << "Enter a different Player ID: ";
+                            cin >> playerID;
+                        }
                     }
+                    break;
                     case 2:
                     {
                         cout << "Enter Player Name: ";
@@ -1072,6 +1096,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         cin.ignore();
                         getline(cin, playerName);
                         current->player_name=playerName;
+                        cout << "Player Name " << playerName << " updated successfully." << endl;
                         break;
                     }
                     case 3:
@@ -1081,6 +1106,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         cin.ignore();
                         getline(cin, country);
                         current->country=country;
+                        cout << "Country " << country << " updated successfully." << endl;
                         break;
                     }
                     case 4:
@@ -1090,6 +1116,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         cin.ignore();
                         getline(cin, dateOfBirth);
                         current->date_of_birth=dateOfBirth;
+                        cout<<"Date of Birth "<<dateOfBirth<<" updated successfully."<<endl;
                         break;
                     }
                     case 5:
@@ -1098,6 +1125,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         int age;
                         cin >> age;
                         current->age=age;
+                        cout<<"Age "<<age<<" added successfully."<<endl;
                         break;
                     }
                     case 6:
@@ -1107,6 +1135,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         cin.ignore();
                         getline(cin, role);
                         current->role=role;
+                        cout<<"Role "<<role<<" updated successfully."<<endl;
                         break;
                     }
                     case 7:
@@ -1116,6 +1145,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         cin.ignore();
                         getline(cin, battingStyle);
                         current->batting_style=battingStyle;
+                        cout<<"Batting Style "<<battingStyle<<" updated successfully."<<endl;
                         break;
                     }
                     case 8:
@@ -1125,6 +1155,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         cin.ignore();
                         getline(cin, bowlingStyle);
                         current->bowling_style=bowlingStyle;
+                        cout<<"Bowling Style "<<bowlingStyle<<" updated successfully."<<endl;
                         break;
                     }
                     case 9:
@@ -1133,6 +1164,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         int matchesPlayed;
                         cin >> matchesPlayed;
                         current->matches_played=matchesPlayed;
+                        cout<<"Matches Played "<<matchesPlayed<<" updated successfully."<<endl;
                         break;
                     }
                     case 10:
@@ -1141,6 +1173,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         int runsScored;
                         cin >> runsScored;
                         current->runs_scored=runsScored;
+                        cout<<"Runs Scored "<<runsScored<<" updated successfully."<<endl;
                         break;
                     }
                     case 11:
@@ -1149,6 +1182,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         int wicketsTaken;
                         cin >> wicketsTaken;
                         current->wickets_taken=wicketsTaken;
+                        cout<<"Wickets Taken "<<wicketsTaken<<" updated successfully."<<endl;
                         break;
                     }
 
@@ -1158,6 +1192,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         int catchesTaken;
                         cin >> catchesTaken;
                         current->catches_taken=catchesTaken;
+                        cout<<"Catches Taken "<<catchesTaken<<" updated successfully."<<endl;
                         break;
                     }
                     case 13:
@@ -1166,6 +1201,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         float battingAverage;
                         cin >> battingAverage;
                         current->batting_average=battingAverage;
+                        cout<<"Batting Average "<<battingAverage<<" updated successfully."<<endl;
                         break;
                     }
                     case 14:
@@ -1174,6 +1210,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         float bowlingAverage;
                         cin >> bowlingAverage;
                         current->bowling_average=bowlingAverage;
+                        cout<<"Bowling Average "<<bowlingAverage<<" updated successfully."<<endl;
                         break;
                     }
                     case 15:
@@ -1182,16 +1219,19 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         int strikeRate;
                         cin >> strikeRate;
                         current->strike_rate=strikeRate;
+                        
                         break;
-                    }
-
+                    
                     case 0 : break;
                     default: cout << "\tInvalid input. Please try again." << endl;
+                    }
                 }
                 if(input==0)
+                {
+                printPlayerData(current);
                 break;
+                }
             }
-            
         }
         current = current->next;
     }
@@ -1200,8 +1240,8 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
     {
         cout << "No players found with ID " << targetPlayerID << endl;
     }
+ }
 
-}
 
 
 

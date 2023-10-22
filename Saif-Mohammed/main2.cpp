@@ -40,6 +40,7 @@ void clearFileBeforWriting(string filename);
 
 //  1. Show Cricketer List
 void showAllPlayerData(Player* head);
+void showIndividualPlayerData(Player* head,int playerID);
 
 // 2. Search Cricketer Information
 void searchPlayerDataByPlayerID(int targetPlayerID);
@@ -105,9 +106,38 @@ int main()
         {
         case 1: 
         { 
-            showAllPlayerData(head); 
-            break;
+            while(true)
+            {
+                cout<<"\t\tShow Cricketer Information"<<endl<<endl;
+                cout<<"\t1. Show All Cricketers List"<<endl;
+                cout<<"\t2. Show Individual Information"<<endl;
+                cout<<"\t0. Return Main Menu"<<endl<<endl;
+                
+                cout<<"\tEnter Instruction: ";
+                cin>>input;
+                switch(input)
+                {
+                    case 1:
+                    {
+                        showAllPlayerData(head);
+                        break;
+                    }
+                    case 2:
+                    {
+                        int id;
+                        cout<<"\tEnter Player ID: ";
+                        cin>>id;
+                        showIndividualPlayerData(head,id);
+                        break;
+                    }
+                    case 0: break;
+                    default: cout << "\tInvalid input. Please try again." << endl;
+                }
+                if(input==0)
+                break;
+            }
         }
+        break;
         case 2:
         {
             while(true)
@@ -652,6 +682,45 @@ void showAllPlayerData(Player* head)
         writePlayerToCSV(current, "/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
         current = current->next;
     }
+}
+
+void showIndividualPlayerData(Player* head, int targetPlayerID)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL)
+    {
+        if (current->player_id == targetPlayerID)
+        {
+            found = true;
+
+            cout<<"Individual Player Data:"<<endl<<endl;
+            cout<< "Player ID " << "\t :" << current->player_id << endl;
+            cout<< "Country " << "\t :" << current->country << endl;
+            cout<< "Player Name " << "\t :" << current->player_name << endl;
+            cout<< "Date of Birth " << "\t :" << current->date_of_birth << endl;
+            cout<< "Player Age " << "\t :" << current->age << endl;
+            cout<< "Player Role " << "\t :" << current->role << endl;
+            cout<< "Batting Style " << "\t :" << current->batting_style << endl;
+            cout<< "Bowling Style " << "\t :" << current->bowling_style << endl;
+            cout<< "Matches Played " << "\t :" << current->matches_played << endl;
+            cout<< "Runs Scored " << "\t :" << current->runs_scored << endl;
+            cout<< "Wickets Taken " << "\t :" << current->wickets_taken << endl;
+            cout<< "Catches Taken " << "\t :" << current->catches_taken << endl;
+            cout<< "Batting Average " << " :" << current->batting_average << endl;
+            cout<< "Bowling Average " << " :" << current->bowling_average << endl;
+            cout<< "Strike Rate " << "\t :" << current->strike_rate << endl;                
+
+        }
+        current = current->next;
+    }
+
+    if (!found)
+    {
+        cout << "No players found with ID " << targetPlayerID << endl;
+    }
+
 }
 
 

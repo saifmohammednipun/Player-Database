@@ -33,7 +33,10 @@ Player* tail = NULL;
 Player* createPlayerData();
 
 // Initally read player data from file
-void readPlayerDataFromFile(); 
+void readPlayerDataFromFile();
+
+// clear file before writing
+void clearFileBeforWriting(string filename);
 
 //  1. Show Cricketer List
 void showAllPlayerData(Player* head);
@@ -62,6 +65,9 @@ void addNewPlayerDataAtPosition(Player* player, int position);
 
 // 4. Update Cricketer Information
 void updatePlayerInformation(Player* player, int targetPlayerID);
+
+// Write updated player data in to file 
+void writePlayerToCSV(Player* player, string filename);
 
 // 5. Delete Cricketer Information
 void deletePlayerDatabase();
@@ -97,7 +103,11 @@ int main()
 
         switch (input)
         {
-        case 1: showAllPlayerData(head); break;
+        case 1: 
+        { 
+            showAllPlayerData(head); 
+            break;
+        }
         case 2:
         {
             while(true)
@@ -263,7 +273,7 @@ int main()
         } 
         break;  
         case 3:
-        {
+        {   
             while(true)
             {
                 cout<<"\t\tAdd Cricketer Information"<<endl<<endl;
@@ -322,6 +332,7 @@ int main()
             int targetPlayerID;
             cout << "Enter Player ID: ";
             cin >> targetPlayerID;
+            clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
             updatePlayerInformation(head,targetPlayerID); 
 
             break;
@@ -582,16 +593,63 @@ void printPlayerData(Player* player)
          << player->strike_rate << endl;
 }
 
+void clearFileBeforWriting(string filename)
+{
+    // Open the file with ios::trunc to clear existing content
+    ofstream clearFile(filename, ios::trunc);
+
+    if (!clearFile.is_open())
+    {
+        cout << "Error opening file for clearing." << endl;
+        return;
+    }
+
+    clearFile.close();
+}
+
+
+ // Function to write a Player to a .csv file
+void writePlayerToCSV(Player* player, string filename)
+{
+    
+    // Open the output file in append mode
+   ofstream outputFile(filename, ios::app);
+
+    if (!outputFile.is_open()) {
+        cout << "Error opening file for writing." << endl;
+        return;
+    }
+
+    // Write the Player data to the .csv file
+    outputFile << player->player_id << ","
+               << player->player_name << ","
+               << player->country << ","
+               << player->date_of_birth << ","
+               << player->age << ","
+               << player->role << ","
+               << player->batting_style << ","
+               << player->bowling_style << ","
+               << player->matches_played << ","
+               << player->runs_scored << ","
+               << player->wickets_taken << ","
+               << player->catches_taken << ","
+               << player->batting_average << ","
+               << player->bowling_average << ","
+               << player->strike_rate << "\n";
+
+    // Close the output file
+    outputFile.close();
+}
+
 void showAllPlayerData(Player* head)
 {
     Player* current = head;
 
     cout << "Player Data:" << endl;
-
     while (current != NULL)
     {
         printPlayerData(current);
-
+        writePlayerToCSV(current, "/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
         current = current->next;
     }
 }
@@ -1052,42 +1110,8 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                 cin>>input;
                 switch(input)
                 {
-                    case 1: 
-                    {
-                        cout << "Enter Player ID: ";
-                        int playerID;
-                        cin >> playerID;
-
-                        while (true)
-                        {
-                            // Check if a player with the same ID already exists
-                            Player* current = head;
-                            bool isDuplicate = false;
-
-                            while (current != NULL)
-                            {
-                                if (current->player_id == playerID)
-                                {
-                                    isDuplicate = true;
-                                    cout << "A player with the same ID already exists." << endl;
-                                    break;
-                                }
-                                current = current->next;
-                            }
-
-                            if (!isDuplicate)
-                            {
-                                printPlayerData(current);
-                                cout << "Player with ID " << playerID << " updated successfully." << endl;
-                                // Add the player to your data structure here
-                                break;
-                            }
-
-                            // Ask the user to enter a new playerID if it's a duplicate
-                            cout << "Enter a different Player ID: ";
-                            cin >> playerID;
-                        }
-                    }
+                    // You can't directly change the Player ID as it's unique.
+                    case 1: cout << "Player ID cannot be updated." << endl;
                     break;
                     case 2:
                     {
@@ -1229,6 +1253,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                 if(input==0)
                 {
                 printPlayerData(current);
+                writePlayerToCSV(current, "/Users/saifmohammed/Desktop/Player-Database/players.csv");
                 break;
                 }
             }
@@ -1241,8 +1266,6 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
         cout << "No players found with ID " << targetPlayerID << endl;
     }
  }
-
-
 
 
 // Delete Player Information

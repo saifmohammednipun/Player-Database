@@ -81,7 +81,6 @@ void deletePlayerDataFromFront(Player* head);
 void deletePlayerDataFromEnd(Player* tail);
 void deletePlayerDataFromPosition(Player* player, int position);
 
-
 int main()
 {
     readPlayerDataFromFile();

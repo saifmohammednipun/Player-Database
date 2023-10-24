@@ -81,6 +81,7 @@ void deletePlayerDataFromFront(Player* head);
 void deletePlayerDataFromEnd(Player* tail);
 void deletePlayerDataFromPosition(Player* player, int position);
 
+
 int main()
 {
     readPlayerDataFromFile();
@@ -118,6 +119,7 @@ int main()
                 {
                     case 1:
                     {
+                        clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
                         showAllPlayerData(head);
                         break;
                     }
@@ -361,7 +363,7 @@ int main()
             int targetPlayerID;
             cout << "Enter Player ID: ";
             cin >> targetPlayerID;
-            clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
+            //clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
             updatePlayerInformation(head,targetPlayerID); 
 
             break;
@@ -379,6 +381,8 @@ int main()
                 cout<< "\t5. Delete Player Data From End"<<endl;
                 cout<< "\t6. Delete Player Data From Any Position"<<endl;
                 cout<<"\t0. Return Main Menu"<<endl<<endl;
+
+                cout << "\tEnter Instruction: ";
                 cin>>input;
                 switch(input)
                 {
@@ -447,6 +451,12 @@ int main()
             }
         }
            
+            break;
+        case 6: 
+        {
+            
+            cout<<"Player Data Sorted Successfully By Player ID"<<endl;
+        }
             break;
         case 0:
             cout << "\tPlayer Database System Exited Successfully";
@@ -695,21 +705,21 @@ void showIndividualPlayerData(Player* head, int targetPlayerID)
             found = true;
 
             cout<<"Individual Player Data:"<<endl<<endl;
-            cout<< "Player ID " << "\t :" << current->player_id << endl;
-            cout<< "Country " << "\t :" << current->country << endl;
-            cout<< "Player Name " << "\t :" << current->player_name << endl;
-            cout<< "Date of Birth " << "\t :" << current->date_of_birth << endl;
-            cout<< "Player Age " << "\t :" << current->age << endl;
-            cout<< "Player Role " << "\t :" << current->role << endl;
-            cout<< "Batting Style " << "\t :" << current->batting_style << endl;
-            cout<< "Bowling Style " << "\t :" << current->bowling_style << endl;
-            cout<< "Matches Played " << "\t :" << current->matches_played << endl;
-            cout<< "Runs Scored " << "\t :" << current->runs_scored << endl;
-            cout<< "Wickets Taken " << "\t :" << current->wickets_taken << endl;
-            cout<< "Catches Taken " << "\t :" << current->catches_taken << endl;
-            cout<< "Batting Average " << " :" << current->batting_average << endl;
-            cout<< "Bowling Average " << " :" << current->bowling_average << endl;
-            cout<< "Strike Rate " << "\t :" << current->strike_rate << endl;                
+            cout<< "Player ID " << "\t : " << current->player_id << endl;
+            cout<< "Country " << "\t : " << current->country << endl;
+            cout<< "Player Name " << "\t : " << current->player_name << endl;
+            cout<< "Date of Birth " << "\t : " << current->date_of_birth << endl;
+            cout<< "Player Age " << "\t : " << current->age << endl;
+            cout<< "Player Role " << "\t : " << current->role << endl;
+            cout<< "Batting Style " << "\t : " << current->batting_style << endl;
+            cout<< "Bowling Style " << "\t : " << current->bowling_style << endl;
+            cout<< "Matches Played " << "\t : " << current->matches_played << endl;
+            cout<< "Runs Scored " << "\t : " << current->runs_scored << endl;
+            cout<< "Wickets Taken " << "\t : " << current->wickets_taken << endl;
+            cout<< "Catches Taken " << "\t : " << current->catches_taken << endl;
+            cout<< "Batting Average " << " : " << current->batting_average << endl;
+            cout<< "Bowling Average " << " : " << current->bowling_average << endl;
+            cout<< "Strike Rate " << "\t : " << current->strike_rate << endl;                
 
         }
         current = current->next;
@@ -1321,7 +1331,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                 if(input==0)
                 {
                 printPlayerData(current);
-                writePlayerToCSV(current, "/Users/saifmohammed/Desktop/Player-Database/players.csv");
+               // writePlayerToCSV(current, "/Users/saifmohammed/Desktop/Player-Database/players.csv");
                 break;
                 }
             }
@@ -1533,3 +1543,5 @@ void deletePlayerDataFromPosition(Player* head, int position)
     previous->next = current->next;
     delete current;
 }
+
+// Insertion Sort

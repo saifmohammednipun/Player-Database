@@ -76,7 +76,6 @@ void deletePlayerDataByPlayerID(int targetPlayerID);
 void deletePlayerDataByPlayerName(string targetPlayerName);
 void deletePlayerDataByCountry(string targetCountry);
 
-
 void deletePlayerDataFromFront(Player* head);
 void deletePlayerDataFromEnd(Player* tail);
 void deletePlayerDataFromPosition(Player* player, int position);
@@ -96,6 +95,8 @@ int main()
         cout << "\t3. Add Cricketer Information" << endl;
         cout << "\t4. Update Cricketer Information" << endl;
         cout << "\t5. Delete Cricketer Information" << endl;
+        cout << "\t6. Sort Cricketer List"<<endl;
+        cout << "\t7. Generate Report "<< endl;
         cout << "\t0. Exit" << endl << endl;
 
         cout << "\tEnter Instruction: ";
@@ -361,7 +362,7 @@ int main()
         case 4: 
         {
             int targetPlayerID;
-            cout << "Enter Player ID: ";
+            cout << "Enter Player ID you want to update: ";
             cin >> targetPlayerID;
             //clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
             updatePlayerInformation(head,targetPlayerID); 
@@ -380,6 +381,7 @@ int main()
                 cout<< "\t4. Delete Plater Data From Front"<<endl;
                 cout<< "\t5. Delete Player Data From End"<<endl;
                 cout<< "\t6. Delete Player Data From Any Position"<<endl;
+                cout<< "\t7. Delete Whole Player Database"<<endl;
                 cout<<"\t0. Return Main Menu"<<endl<<endl;
 
                 cout << "\tEnter Instruction: ";
@@ -442,6 +444,7 @@ int main()
                         cout<<"Player Database Deleted Successfully"<<endl;
                         break;
                     }
+
                     case 0: break;
                     default: cout << "\tInvalid input. Please try again." << endl;
                 }
@@ -452,12 +455,26 @@ int main()
         }
            
             break;
+
         case 6: 
         {
+            cout<< "Sort Player Information"<<endl<<endl;  
+            cout<<"\t1. Sort Cricketers by PlayerID" <<endl;
+            cout<<"\t2. Sort Cricketers by Country" <<endl;
+            cout<<"\t3. Sort Cricketer by Match Played " <<endl;
+            cout<<"\t4. Sort Cricketer by Run Scored"<<endl;
+            cout<<"\t5. Sort Cricketer by Wickets Taken" <<endl;
+            cout<<"\t6. Sort Cricketer by Catches Taken" <<endl;
+            cout<<"\t7. Sort Cricketer by Strike Rate" <<endl;
             
-            cout<<"Player Data Sorted Successfully By Player ID"<<endl;
+            int input;
+            cout<<"Enter Instruction: ";
+            cin>>input;
+
+
+        break;
         }
-            break;
+        case 7: break;
         case 0:
             cout << "\tPlayer Database System Exited Successfully";
             exit(0);
@@ -613,23 +630,22 @@ void readPlayerDataFromFile()
 
 void printPlayerData(Player* player)
 {
-    cout << player->player_id << "\t"
-         << player->country << "\t"
-         << player->player_name << "\t"
-         << player->date_of_birth << "\t"
-         << player->age << "\t"
-         << player->role << "\t"
-         << player->batting_style << "\t"
-         << player->bowling_style << "\t"
-         << player->matches_played << "\t"
-         << player->runs_scored << "\t"
-         << player->wickets_taken << "\t"
-         << player->catches_taken << "\t";
-
+    cout << player->player_id << setw(15)
+            << player->country << setw(22)
+            << player->player_name << setw(13)
+            << player->date_of_birth << setw(8)
+            << player->age << setw(23)
+            << player->role << setw(20)
+            << player->batting_style << setw(24)
+            << player->bowling_style << setw(10)
+            << player->matches_played << setw(10)
+            << player->runs_scored << setw(10)
+            << player->wickets_taken << setw(10)
+            << player->catches_taken << setw(10);
     cout << fixed << setprecision(2);
-    cout << player->batting_average << "\t"
-         << player->bowling_average << "\t"
-         << player->strike_rate << endl;
+    cout << player->batting_average << setw(10)
+            << player->bowling_average << setw(10)
+            << player->strike_rate << endl;
 }
 
 void clearFileBeforWriting(string filename)
@@ -645,7 +661,6 @@ void clearFileBeforWriting(string filename)
 
     clearFile.close();
 }
-
 
  // Function to write a Player to a .csv file
 void writePlayerToCSV(Player* player, string filename)
@@ -685,6 +700,7 @@ void showAllPlayerData(Player* head)
     Player* current = head;
 
     cout << "Player Data:" << endl;
+    cout<<"ID"<<setw(15)<< "Country"<<setw(22)<<"Player Name"<<setw(16)<<"Date of Birth"<<setw(6)<<"Age"<<setw(22)<<"Role"<<setw(20)<<"Batting Style"<<setw(20)<<"Bowling Style"<<setw(15)<<"M.P."<<setw(9)<<"Runs"<<setw(10)<<"Wickets"<<setw(10)<<"Catches"<<setw(10)<<"Bat Avg"<<setw(10)<<"Bowl Avg"<<setw(10)<<"SR"<<endl;
     while (current != NULL)
     {
         printPlayerData(current);
@@ -705,11 +721,11 @@ void showIndividualPlayerData(Player* head, int targetPlayerID)
             found = true;
 
             cout<<"Individual Player Data:"<<endl<<endl;
-            cout<< "Player ID " << "\t : " << current->player_id << endl;
-            cout<< "Country " << "\t : " << current->country << endl;
+            cout<< "Player ID " << "\t\t : " << current->player_id << endl;
+            cout<< "Country " << "\t\t : " << current->country << endl;
             cout<< "Player Name " << "\t : " << current->player_name << endl;
             cout<< "Date of Birth " << "\t : " << current->date_of_birth << endl;
-            cout<< "Player Age " << "\t : " << current->age << endl;
+            cout<< "Player Age " << "\t\t : " << current->age << endl;
             cout<< "Player Role " << "\t : " << current->role << endl;
             cout<< "Batting Style " << "\t : " << current->batting_style << endl;
             cout<< "Bowling Style " << "\t : " << current->bowling_style << endl;
@@ -717,8 +733,8 @@ void showIndividualPlayerData(Player* head, int targetPlayerID)
             cout<< "Runs Scored " << "\t : " << current->runs_scored << endl;
             cout<< "Wickets Taken " << "\t : " << current->wickets_taken << endl;
             cout<< "Catches Taken " << "\t : " << current->catches_taken << endl;
-            cout<< "Batting Average " << " : " << current->batting_average << endl;
-            cout<< "Bowling Average " << " : " << current->bowling_average << endl;
+            cout<< "Batting Average" << "\t : " << current->batting_average << endl;
+            cout<< "Bowling Average" << "\t : "<< current->bowling_average << endl;
             cout<< "Strike Rate " << "\t : " << current->strike_rate << endl;                
 
         }
@@ -1162,10 +1178,10 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
         if (current->player_id == targetPlayerID)
         {
             found = true;
+            cout<<endl;
+            cout<<"Player Data: "<<endl;
             printPlayerData(current);
-            
-            while(true)
-            {
+
                 cout<<"\t1. Update Player ID"<<endl;
                 cout<<"\t2. Update Player Name"<<endl;
                 cout<<"\t3. Update Country"<<endl;
@@ -1182,6 +1198,12 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                 cout<<"\t14. Update Bowling Average"<<endl;
                 cout<<"\t15. Update Strike Rate"<<endl;
                 cout<<"\t0. Return Main Menu"<<endl<<endl;
+
+            while(true)
+            {
+               cout<< "\tDo you want to update any information?";
+               cout<<"\tYes - (1-15)";
+               cout<<"\tNo - (0)"<<endl;
 
                 cout<<"\tEnter Instruction: ";
                 int input;
@@ -1227,7 +1249,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         int age;
                         cin >> age;
                         current->age=age;
-                        cout<<"Age "<<age<<" added successfully."<<endl;
+                        cout<<"Age "<<age<<" updated successfully."<<endl;
                         break;
                     }
                     case 6:
@@ -1330,8 +1352,10 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                 }
                 if(input==0)
                 {
+                    cout<<endl;
+                cout<<"Updated Player Data:"<<endl;
                 printPlayerData(current);
-               // writePlayerToCSV(current, "/Users/saifmohammed/Desktop/Player-Database/players.csv");
+                cout<<endl;
                 break;
                 }
             }
@@ -1344,6 +1368,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
         cout << "No players found with ID " << targetPlayerID << endl;
     }
  }
+
 
 
 // Delete Player Information

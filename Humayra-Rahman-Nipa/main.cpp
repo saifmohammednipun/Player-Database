@@ -44,13 +44,13 @@ void showIndividualPlayerData(Player* head,int playerID);
 
 // 2. Search Cricketer Information
 void searchPlayerDataByPlayerID(int targetPlayerID);
-// void searchPlayerDataByCountry(string targetCountry);
-// void searchPlayerDataByPlayerName(string targetPlayerName);
-// void searchPlayerDataByDateOfBirth(string targetDateOfBirth);
-// void searchPlayerDataByAge(int targetAge);
-// void searchPlayerDataByRole(string targetRole);
-// void searchPlayerDataByBattingStyle(string targetBattingStyle);
-// void searchPlayerDataByBowlingStyle(string targetBowlingStyle);
+void searchPlayerDataByCountry(string targetCountry);
+void searchPlayerDataByPlayerName(string targetPlayerName);
+ void searchPlayerDataByDateOfBirth(string targetDateOfBirth);
+ void searchPlayerDataByAge(int targetAge);
+ void searchPlayerDataByRole(string targetRole);
+ void searchPlayerDataByBattingStyle(string targetBattingStyle);
+void searchPlayerDataByBowlingStyle(string targetBowlingStyle);
 // void searchPlayerDataByMatchesPlayed(int targetMatchesPlayed);
 // void searchPlayerDataByRunsScored(int targetRunsScored);
 // void searchPlayerDataByWicketsTaken(int targetWicketsTaken);
@@ -63,7 +63,7 @@ void searchPlayerDataByPlayerID(int targetPlayerID);
 
 
 
-// Write updated player data in to file 
+// Write updated player data in to file
 void writePlayerToCSV(Player* player, string filename);
 
 
@@ -95,15 +95,15 @@ int main()
 
         switch (input)
         {
-        case 1: 
-        { 
+        case 1:
+        {
             while(true)
             {
                 cout<<"\t\tShow Cricketer Information"<<endl<<endl;
                 cout<<"\t1. Show All Cricketers List"<<endl;
                 cout<<"\t2. Show Individual Information"<<endl;
                 cout<<"\t0. Return Main Menu"<<endl<<endl;
-                
+
                 cout<<"\tEnter Instruction: ";
                 cin>>input;
                 switch(input)
@@ -166,14 +166,14 @@ int main()
                         searchPlayerDataByPlayerID(playerID);
                         break;
                     }
-                   
+
                     case 2:
                      {
                         cout << "\tEnter Country: ";
                         string country;
                         cin.ignore();
                         getline(cin, country);
-                        //searchPlayerDataByCountry(country);
+                        searchPlayerDataByCountry(country);
                         break;
                     }
                     case 3:
@@ -182,7 +182,7 @@ int main()
                         string playerName;
                         cin.ignore();
                         getline(cin, playerName);
-                       // searchPlayerDataByPlayerName(playerName);
+                       searchPlayerDataByPlayerName(playerName);
                         break;
                     }
                     case 4:
@@ -195,7 +195,7 @@ int main()
                         break;
                     }
                     case 5:
-                    { 
+                    {
                         cout << "\tEnter Age: ";
                         int age;
                         cin >> age;
@@ -284,7 +284,7 @@ int main()
                         cin >> strikeRate;
                        // searchPlayerDataByStrikeRate(strikeRate);
                         break;
-                    } 
+                    }
                     case 0 : break;
                     default: cout << "\tInvalid input. Please try again." << endl;
             }
@@ -292,10 +292,10 @@ int main()
             break;
           }
 
-        } 
-        break;  
+        }
+        break;
         case 3:
-        {   
+        {
             while(true)
             {
                 cout<<"\t\tAdd Cricketer Information"<<endl<<endl;
@@ -303,7 +303,7 @@ int main()
                 cout<<"\t2. Add New Player Data at End"<<endl;
                 cout<<"\t3. Add New Player Data at Position"<<endl;
                 cout<<"\t0. Return Main Menu"<<endl<<endl;
-                
+
                 cout<<"\tEnter Instruction: ";
                 cin>>input;
                 switch(input)
@@ -349,13 +349,13 @@ int main()
             }
         }
         break;
-        case 4: 
+        case 4:
         {
             int targetPlayerID;
             cout << "Enter Player ID you want to update: ";
             cin >> targetPlayerID;
             //clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
-           // updatePlayerInformation(head,targetPlayerID); 
+           // updatePlayerInformation(head,targetPlayerID);
 
             break;
         }
@@ -367,7 +367,7 @@ int main()
                 cout<<"\t1. Delete Player Data by Player ID"<<endl;
                 cout<<"\t2. Delete Player Data by Player Name"<<endl;
                 cout<<"\t3. Delete Player Data by Country"<<endl;
-                
+
                 cout<< "\t4. Delete Plater Data From Front"<<endl;
                 cout<< "\t5. Delete Player Data From End"<<endl;
                 cout<< "\t6. Delete Player Data From Any Position"<<endl;
@@ -378,7 +378,7 @@ int main()
                 cin>>input;
                 switch(input)
                 {
-                    case 1: 
+                    case 1:
                     {
                         cout << "Enter Player ID: ";
                         int playerID;
@@ -438,17 +438,17 @@ int main()
                     case 0: break;
                     default: cout << "\tInvalid input. Please try again." << endl;
                 }
-            
+
              if(input==0)
              break;
             }
         }
-           
+
             break;
 
-        case 6: 
+        case 6:
         {
-            cout<< "Sort Player Information"<<endl<<endl;  
+            cout<< "Sort Player Information"<<endl<<endl;
             cout<<"\t1. Sort Cricketers by PlayerID" <<endl;
             cout<<"\t2. Sort Cricketers by Country" <<endl;
             cout<<"\t3. Sort Cricketer by Match Played " <<endl;
@@ -456,7 +456,7 @@ int main()
             cout<<"\t5. Sort Cricketer by Wickets Taken" <<endl;
             cout<<"\t6. Sort Cricketer by Catches Taken" <<endl;
             cout<<"\t7. Sort Cricketer by Strike Rate" <<endl;
-            
+
             int input;
             cout<<"Enter Instruction: ";
             cin>>input;
@@ -499,7 +499,7 @@ Player* createPlayerData()
     if (!isDuplicate)
     {
         cout << "Enter Country: ";
-        cin.ignore(); 
+        cin.ignore();
         getline(cin, newPlayer->country);
 
         cout << "Enter Player Name: ";
@@ -558,7 +558,7 @@ Player* createPlayerData()
 void readPlayerDataFromFile()
 {
     ifstream inputFile;
-    inputFile.open("/Users/saifmohammed/Desktop/Player-Database/Player-Database-CWC-2023.csv");
+    inputFile.open("D:/project/Player-Database-using-LinkedList/Player-Database-CWC-2023.csv");
 
     if (inputFile.fail())
     {
@@ -655,7 +655,7 @@ void clearFileBeforWriting(string filename)
  // Function to write a Player to a .csv file
 void writePlayerToCSV(Player* player, string filename)
 {
-    
+
     // Open the output file in append mode
    ofstream outputFile(filename, ios::app);
 
@@ -725,7 +725,7 @@ void showIndividualPlayerData(Player* head, int targetPlayerID)
             cout<< "Catches Taken " << "\t : " << current->catches_taken << endl;
             cout<< "Batting Average" << "\t : " << current->batting_average << endl;
             cout<< "Bowling Average" << "\t : "<< current->bowling_average << endl;
-            cout<< "Strike Rate " << "\t : " << current->strike_rate << endl;                
+            cout<< "Strike Rate " << "\t : " << current->strike_rate << endl;
 
         }
         current = current->next;
@@ -744,18 +744,59 @@ void searchPlayerDataByPlayerID(int targetPlayerID)
     Player* current = head;
     bool found = false;
 
-    while (current != NULL)
+    while (current != NULL) //to traverse the whole linked list until the last node
     {
         if (current->player_id == targetPlayerID)
         {
             found = true;
-            printPlayerData(current);
+            printPlayerData(current); //printing the player data
         }
-        current = current->next;
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
     }
 
     if (!found)
     {
         cout << "No players found with ID " << targetPlayerID << endl;
+    }
+}
+
+void searchPlayerDataByCountry(string targetCountry)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->country == targetCountry)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with Country " << targetCountry << endl;
+    }
+}
+void searchPlayerDataByPlayerName(string targetPlayerName)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->player_name == targetPlayerName)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this Name " << targetPlayerName<< endl;
     }
 }

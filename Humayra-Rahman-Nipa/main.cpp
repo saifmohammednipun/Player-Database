@@ -191,7 +191,7 @@ int main()
                         string dateOfBirth;
                         cin.ignore();
                         getline(cin, dateOfBirth);
-                        //searchPlayerDataByDateOfBirth(dateOfBirth);
+                        searchPlayerDataByDateOfBirth(dateOfBirth);
                         break;
                     }
                     case 5:
@@ -798,5 +798,25 @@ void searchPlayerDataByPlayerName(string targetPlayerName)
     if (!found)
     {
         cout << "No players found with this Name " << targetPlayerName<< endl;
+    }
+}
+void searchPlayerDataByDateOfBirth(string targetDateOfBirth)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->date_of_birth == targetDateOfBirth)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this date of birth" << targetDateOfBirth<< endl;
     }
 }

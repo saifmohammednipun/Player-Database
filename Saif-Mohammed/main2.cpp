@@ -748,7 +748,6 @@ void showIndividualPlayerData(Player* head, int targetPlayerID)
 
 }
 
-
 void searchPlayerDataByPlayerID(int targetPlayerID)
 {
     Player* current = head;

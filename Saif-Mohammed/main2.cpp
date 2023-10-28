@@ -1072,7 +1072,6 @@ void searchPlayerDataByBowlingAverage(float targetBowlingAverage)
         }
         current = current->next;
     }
-
     if (!found)
     {
         cout << "No players found with bowling average " << targetBowlingAverage << endl;

@@ -959,7 +959,6 @@ void searchPlayerDataByMatchesPlayed(int targetMatchesPlayed)
     }
 }
 
-
 void searchPlayerDataByRunsScored(int targetRunsScored)
 {
     Player* current = head;

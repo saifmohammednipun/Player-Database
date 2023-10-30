@@ -983,7 +983,6 @@ void searchPlayerDataByRunsScored(int targetRunsScored)
 }
 
 
-
 void searchPlayerDataByWicketsTaken(int targetWicketsTaken)
 {
     Player* current = head;

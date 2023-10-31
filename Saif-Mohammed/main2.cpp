@@ -1565,4 +1565,5 @@ void deletePlayerDataFromPosition(Player* head, int position)
     delete current;
 }
 
+
 // Insertion Sort

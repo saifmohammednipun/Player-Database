@@ -748,7 +748,6 @@ void showIndividualPlayerData(Player* head, int targetPlayerID)
 
 }
 
-
 void searchPlayerDataByPlayerID(int targetPlayerID)
 {
     Player* current = head;
@@ -960,7 +959,6 @@ void searchPlayerDataByMatchesPlayed(int targetMatchesPlayed)
     }
 }
 
-
 void searchPlayerDataByRunsScored(int targetRunsScored)
 {
     Player* current = head;
@@ -983,7 +981,6 @@ void searchPlayerDataByRunsScored(int targetRunsScored)
         cout << "No players found with runs scored " << targetRunsScored << endl;
     }
 }
-
 
 
 void searchPlayerDataByWicketsTaken(int targetWicketsTaken)
@@ -1073,7 +1070,6 @@ void searchPlayerDataByBowlingAverage(float targetBowlingAverage)
         }
         current = current->next;
     }
-
     if (!found)
     {
         cout << "No players found with bowling average " << targetBowlingAverage << endl;
@@ -1568,5 +1564,6 @@ void deletePlayerDataFromPosition(Player* head, int position)
     previous->next = current->next;
     delete current;
 }
+
 
 // Insertion Sort

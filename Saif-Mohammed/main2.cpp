@@ -4,9 +4,8 @@
 #include <iomanip>
 using namespace std;
 
-class Player
+struct Player
 {
-public:
     int player_id;
     string country;
     string player_name;
@@ -29,7 +28,7 @@ public:
 Player* head = NULL;
 Player* tail = NULL;
 
-// New player data
+// Create New player data
 Player* createPlayerData();
 
 // Initally read player data from file
@@ -37,6 +36,9 @@ void readPlayerDataFromFile();
 
 // clear file before writing
 void clearFileBeforWriting(string filename);
+
+// Write updated player data in to file 
+void writePlayerToCSV(Player* player, string filename);
 
 //  1. Show Cricketer List
 void showAllPlayerData(Player* head);
@@ -67,9 +69,6 @@ void addNewPlayerDataAtPosition(Player* player, int position);
 // 4. Update Cricketer Information
 void updatePlayerInformation(Player* player, int targetPlayerID);
 
-// Write updated player data in to file 
-void writePlayerToCSV(Player* player, string filename);
-
 // 5. Delete Cricketer Information
 void deletePlayerDatabase();
 void deletePlayerDataByPlayerID(int targetPlayerID);
@@ -89,6 +88,10 @@ void sortPlayerDataByRunsScored();
 void sortPlayerDataByWicketsTaken();
 void sortPlayerDataByCatchesTaken();
 void sortPlayerDataByStrikeRate();
+
+// 7. Generate Report
+void generateIndividualReport(int targetPlayerID);
+void generateTeamReport(string targetCountry);
 
 
 int main()
@@ -119,7 +122,7 @@ int main()
         { 
             while(true)
             {
-                cout<<"\t\tShow Cricketer Information"<<endl<<endl;
+                cout<<"\t\t Show Cricketer Information"<<endl<<endl;
                 cout<<"\t1. Show All Cricketers List"<<endl;
                 cout<<"\t2. Show Individual Information"<<endl;
                 cout<<"\t0. Return Main Menu"<<endl<<endl;
@@ -541,7 +544,46 @@ int main()
             }
         }
         break;
-        case 7: break;
+        case 7: 
+        {
+            while(true)
+            {
+                cout<<"\t\tGenerate Report"<<endl<<endl;
+                cout<<"\t1. Generate Individual Report"<<endl;
+                cout<<"\t2. Generate Team Report"<<endl;
+                cout<<"\t0. Return Main Menu"<<endl<<endl;
+                
+                cout<<"\tEnter Instruction: ";
+                cin>>input;
+                switch(input)
+                {
+                    case 1:
+                    {
+                        int playerID;
+                        cout<<"\tEnter Player ID: ";
+                        cin>>playerID;
+                        clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Player-Report.txt");
+                        generateIndividualReport(playerID);
+                        break;
+                    }
+                    case 2:
+                    {
+                        string country;
+                        cout<<"\tEnter Country: ";
+                        cin.ignore();
+                        getline(cin, country);
+                        clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Player-Report.txt");
+                        generateTeamReport(country);
+                        break;
+                    }
+                    case 0: break;
+                    default: cout << "\tInvalid input. Please try again." << endl;
+                }
+                if(input==0)
+                break;
+            }
+           
+        } break;
         case 0:
             cout << "\tPlayer Database System Exited Successfully";
             exit(0);
@@ -757,6 +799,39 @@ void writePlayerToCSV(Player* player, string filename)
                << player->batting_average << ","
                << player->bowling_average << ","
                << player->strike_rate << "\n";
+
+    // Close the output file
+    outputFile.close();
+}
+
+
+void writePlayerToTxT(Player* player, string filename)
+{
+    
+    // Open the output file in append mode
+   ofstream outputFile(filename, ios::app);
+
+    if (!outputFile.is_open()) {
+        cout << "Error opening file for writing." << endl;
+        return;
+    }
+
+    // Write the Player data to the .txt file
+             outputFile<< "Player ID " << "\t\t : " << player->player_id << "\n";
+             outputFile<< "Country " << "\t\t : " << player->country << "\n";
+             outputFile<< "Player Name " << "\t : " << player->player_name << "\n";
+             outputFile<< "Date of Birth " << "\t : " << player->date_of_birth << "\n";
+             outputFile<< "Player Age " << "\t\t : " << player->age << "\n";
+             outputFile<< "Player Role " << "\t : " << player->role << "\n";
+             outputFile<< "Batting Style " << "\t : " << player->batting_style << "\n";
+             outputFile<< "Bowling Style " << "\t : " << player->bowling_style << "\n";
+             outputFile<< "Matches Played " << "\t : " << player->matches_played << "\n";
+             outputFile<< "Runs Scored " << "\t : " << player->runs_scored << "\n";
+             outputFile<< "Wickets Taken " << "\t : " << player->wickets_taken << "\n";
+             outputFile<< "Catches Taken " << "\t : " << player->catches_taken << "\n";
+             outputFile<< "Batting Average" << "\t : " << player->batting_average << "\n";
+             outputFile<< "Bowling Average" << "\t : "<< player->bowling_average << "\n";
+             outputFile<< "Strike Rate " << "\t : " << player->strike_rate << "\n\n\n";;  
 
     // Close the output file
     outputFile.close();
@@ -1669,7 +1744,7 @@ void sortPlayerDataByPlayerID() {
 }
 
 //Sort Player Data by Country
-void sortPlayerDataByPlayerCountry()
+void sortPlayerDataByCountry()
 {
     if (head == NULL) {
         // Empty list, nothing to sort
@@ -2001,3 +2076,56 @@ void sortPlayerDataByStrikeRate()
         tail = tail->next;
     }
 }
+
+
+
+
+
+
+void generateIndividualReport(int targetPlayerID)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL)
+    {
+        if (current->player_id == targetPlayerID)
+        {
+            found = true;
+            showIndividualPlayerData(current, targetPlayerID);
+            writePlayerToTxT(current, "/Users/saifmohammed/Desktop/Player-Database/Player-Report.txt");
+            
+        }
+        current = current->next;
+    }
+
+    if (!found)
+    {
+        cout << "No players found with ID " << targetPlayerID << endl;
+    }
+}
+
+
+void generateTeamReport(string targetCountry)
+{
+    Player* current = head;
+    bool found = false;
+    
+    sortPlayerDataByPlayerID();
+
+    while (current != NULL)
+    {
+        if (current->country == targetCountry)
+        {
+            found = true;
+            writePlayerToTxT(current, "/Users/saifmohammed/Desktop/Player-Database/Player-Report.txt");
+        }
+        current = current->next;
+    }
+
+    if (!found)
+    {
+        cout << "No players found from " << targetCountry << endl;
+    }
+}
+

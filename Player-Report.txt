@@ -1,0 +1,85 @@
+Player ID 		 : 41
+Country 		 : Bangladesh
+Player Name 	 : Mushfiqur Rahim
+Date of Birth 	 : 9/5/87
+Player Age 		 : 35
+Player Role 	 : Wicketkeeper-Batsman
+Batting Style 	 : Right-Handed
+Bowling Style 	 : Right-Arm Medium
+Matches Played 	 : 115
+Runs Scored 	 : 4500
+Wickets Taken 	 : 0
+Catches Taken 	 : 35
+Batting Average	 : 39.13
+Bowling Average	 : 0
+Strike Rate 	 : 80
+
+
+Player ID 		 : 42
+Country 		 : Bangladesh
+Player Name 	 : Tamim Iqbal
+Date of Birth 	 : 20/3/89
+Player Age 		 : 34
+Player Role 	 : Batsman
+Batting Style 	 : Left-Handed
+Bowling Style 	 : Right-Arm Medium
+Matches Played 	 : 125
+Runs Scored 	 : 5500
+Wickets Taken 	 : 10
+Catches Taken 	 : 30
+Batting Average	 : 44
+Bowling Average	 : 33
+Strike Rate 	 : 90
+
+
+Player ID 		 : 43
+Country 		 : Bangladesh
+Player Name 	 : Shakib Al Hasan
+Date of Birth 	 : 24/3/87
+Player Age 		 : 36
+Player Role 	 : All-Rounder
+Batting Style 	 : Left-Handed
+Bowling Style 	 : Left-Arm Spin
+Matches Played 	 : 130
+Runs Scored 	 : 4000
+Wickets Taken 	 : 90
+Catches Taken 	 : 25
+Batting Average	 : 30.77
+Bowling Average	 : 26.67
+Strike Rate 	 : 100
+
+
+Player ID 		 : 44
+Country 		 : Bangladesh
+Player Name 	 : Mehidy Hasan
+Date of Birth 	 : 25/10/97
+Player Age 		 : 25
+Player Role 	 : Bowler
+Batting Style 	 : Right-Handed
+Bowling Style 	 : Off-Spin
+Matches Played 	 : 95
+Runs Scored 	 : 1200
+Wickets Taken 	 : 50
+Catches Taken 	 : 15
+Batting Average	 : 12
+Bowling Average	 : 4
+Strike Rate 	 : 80
+
+
+Player ID 		 : 45
+Country 		 : Bangladesh
+Player Name 	 : Mohammad Saifuddin
+Date of Birth 	 : 1/12/96
+Player Age 		 : 26
+Player Role 	 : All-Rounder
+Batting Style 	 : Right-Handed
+Bowling Style 	 : Right-Arm Medium-Fast
+Matches Played 	 : 90
+Runs Scored 	 : 800
+Wickets Taken 	 : 40
+Catches Taken 	 : 10
+Batting Average	 : 16
+Bowling Average	 : 20
+Strike Rate 	 : 110
+
+

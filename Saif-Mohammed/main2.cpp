@@ -80,6 +80,9 @@ void deletePlayerDataFromFront(Player* head);
 void deletePlayerDataFromEnd(Player* tail);
 void deletePlayerDataFromPosition(Player* player, int position);
 
+// 6. Sort Cricketer Information
+void sortPlayerDataByPlayerID(Player* head);
+
 
 int main()
 {
@@ -178,7 +181,7 @@ int main()
                     }
                    
                     case 2:
-                     {
+                    {
                         cout << "\tEnter Country: ";
                         string country;
                         cin.ignore();
@@ -455,25 +458,48 @@ int main()
         }
            
             break;
-
-        case 6: 
-        {
-            cout<< "Sort Player Information"<<endl<<endl;  
-            cout<<"\t1. Sort Cricketers by PlayerID" <<endl;
-            cout<<"\t2. Sort Cricketers by Country" <<endl;
-            cout<<"\t3. Sort Cricketer by Match Played " <<endl;
-            cout<<"\t4. Sort Cricketer by Run Scored"<<endl;
-            cout<<"\t5. Sort Cricketer by Wickets Taken" <<endl;
-            cout<<"\t6. Sort Cricketer by Catches Taken" <<endl;
-            cout<<"\t7. Sort Cricketer by Strike Rate" <<endl;
+        case 6:
+        {   
+            while(true)
+            {
+                cout<<"\tSort Player Information"<<endl<<endl;  
+                cout<<"\t1. Sort Cricketers by PlayerID" <<endl;
+                cout<<"\t2. Sort Cricketers by Country" <<endl;
+                cout<<"\t3. Sort Cricketer by Match Played " <<endl;
+                cout<<"\t4. Sort Cricketer by Run Scored"<<endl;
+                cout<<"\t5. Sort Cricketer by Wickets Taken" <<endl;
+                cout<<"\t6. Sort Cricketer by Catches Taken" <<endl;
+                cout<<"\t7. Sort Cricketer by Strike Rate" <<endl;
             
-            int input;
-            cout<<"Enter Instruction: ";
-            cin>>input;
-
-
-        break;
+                
+                cout<<"\tEnter Instruction: ";
+                cin>>input;
+                switch(input)
+                {
+                    case 1:
+                    {
+                        
+                        sortPlayerDataByPlayerID(head);
+                        cout<<"Sort Cricketers by PlayerID"<<endl;
+                        
+                        
+                    }break;
+                    case 2:
+                    {
+                        break;
+                    }
+                    case 3:
+                    {
+                       break;
+                    }
+                    case 0: break;
+                    default: cout << "\tInvalid input. Please try again." << endl;
+                }
+                if(input==0)
+                break;
+            }
         }
+        break;
         case 7: break;
         case 0:
             cout << "\tPlayer Database System Exited Successfully";
@@ -1565,5 +1591,3 @@ void deletePlayerDataFromPosition(Player* head, int position)
     delete current;
 }
 
-
-// Insertion Sort

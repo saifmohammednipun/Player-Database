@@ -765,14 +765,14 @@ void searchPlayerDataByCountry(string targetCountry)
     Player* current = head;
     bool found = false;
 
-    while (current != NULL) //to traverse the whole linked list until the last node
+    while (current != NULL) 
     {
         if (current->country == targetCountry)
         {
             found = true;
-            printPlayerData(current); //printing the player data
+            printPlayerData(current); 
         }
-        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+        current = current->next;  
     }
 
     if (!found)
@@ -780,6 +780,7 @@ void searchPlayerDataByCountry(string targetCountry)
         cout << "No players found with Country " << targetCountry << endl;
     }
 }
+
 void searchPlayerDataByPlayerName(string targetPlayerName)
 {
     Player* current = head;
@@ -800,6 +801,7 @@ void searchPlayerDataByPlayerName(string targetPlayerName)
         cout << "No players found with this Name " << targetPlayerName<< endl;
     }
 }
+
 void searchPlayerDataByDateOfBirth(string targetDateOfBirth)
 {
     Player* current = head;

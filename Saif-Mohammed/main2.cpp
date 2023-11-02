@@ -476,11 +476,11 @@ int main()
                 cout<<"\t1. Sort Cricketers by PlayerID" <<endl;
                 cout<<"\t2. Sort Cricketers by Country" <<endl;
                 cout<<"\t3. Sort Cricketer by Age " <<endl;
-                cout<<"\t3. Sort Cricketer by Match Played " <<endl;
-                cout<<"\t4. Sort Cricketer by Run Scored"<<endl;
-                cout<<"\t5. Sort Cricketer by Wickets Taken" <<endl;
-                cout<<"\t6. Sort Cricketer by Catches Taken" <<endl;
-                cout<<"\t7. Sort Cricketer by Strike Rate" <<endl;
+                cout<<"\t4. Sort Cricketer by Match Played " <<endl;
+                cout<<"\t5. Sort Cricketer by Run Scored"<<endl;
+                cout<<"\t6. Sort Cricketer by Wickets Taken" <<endl;
+                cout<<"\t7. Sort Cricketer by Catches Taken" <<endl;
+                cout<<"\t8. Sort Cricketer by Strike Rate" <<endl <<endl;
             
                 
                 cout<<"\tEnter Instruction: ";
@@ -596,7 +596,7 @@ int main()
 
 Player* createPlayerData()
 {
-    Player* newPlayer = new Player;
+    Player* newPlayer = new Player; // Create a new dynamic Player object
 
     cout << "Enter Player ID: ";
     cin >> newPlayer->player_id;
@@ -667,7 +667,7 @@ Player* createPlayerData()
     {
         // If a player with the same ID exists, don't add the new player.
         delete newPlayer;
-        newPlayer = NULL;
+        newPlayer = NULL; // Set the pointer to NULL to avoid dangling pointer
     }
 
     return newPlayer;
@@ -1245,7 +1245,7 @@ void searchPlayerDataByStrikeRate(int targetStrikeRate)
 
 
 
-
+//Add New Player Data at front
 void addNewPlayerDataAtFront(Player* player, Player* head)
 {
     if (head == NULL)
@@ -1255,8 +1255,9 @@ void addNewPlayerDataAtFront(Player* player, Player* head)
     }
     else
     {
-        player->next = head;
-        head = player;
+        // Time Complexity - Big O(1)
+        player->next = head; // Make the new player point to the current head
+        head = player; // Make the new player the new head
     }
 }
 
@@ -1270,33 +1271,37 @@ void addNewPlayerDataAtEnd(Player* player, Player* tail)
     }
     else
     {
-        tail->next = player;
-        tail = player;
+        // Time Complexity - Big O(1) 
+        tail->next = player; // Make the current tail point to the new player
+        tail = player; // Make the new player the new tail
     }
 }
 
 
+// Add New Player Data at any Position
 void addNewPlayerDataAtPosition(Player* player, int position)
 {
     if (position == 1)
     {
         addNewPlayerDataAtFront(player, head);
     }
+
     else
     {
         Player* current = head;
         int count = 1;
 
-        while (current != NULL && count < position - 1)
+        // Time Complexity - Big O(n)
+        while (current != NULL && count < position - 1) // Stop at the node before the position
         {
-            current = current->next;
-            count++;
+            current = current->next; // Move to the next node
+            count++; 
         }
 
-        if (current != NULL)
+        if (current != NULL) // If the position is valid
         {
-            player->next = current->next;
-            current->next = player;
+            player->next = current->next; // Make the new player point to the node at the position
+            current->next = player; // Make the node before the position point to the new player
         }
         else
         {
@@ -1311,7 +1316,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
     Player* current = head;
     bool found = false;
 
-    while (current != NULL)
+    while (current != NULL) // Time Complexity Big O(N) // Linear Sarch 
     {
         if (current->player_id == targetPlayerID)
         {
@@ -1367,7 +1372,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         string country;
                         cin.ignore();
                         getline(cin, country);
-                        current->country=country;
+                        current->country = country; 
                         cout << "Country " << country << " updated successfully." << endl;
                         break;
                     }
@@ -1425,7 +1430,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                         cout << "Enter Matches Played: ";
                         int matchesPlayed;
                         cin >> matchesPlayed;
-                        current->matches_played=matchesPlayed;
+                        current->matches_played = matchesPlayed;
                         cout<<"Matches Played "<<matchesPlayed<<" updated successfully."<<endl;
                         break;
                     }
@@ -2076,10 +2081,6 @@ void sortPlayerDataByStrikeRate()
         tail = tail->next;
     }
 }
-
-
-
-
 
 
 void generateIndividualReport(int targetPlayerID)

@@ -482,7 +482,6 @@ int main()
                         sortPlayerDataByPlayerID(head);
                         cout<<"Sort Cricketers by PlayerID"<<endl;
                         
-                        
                     }break;
                     case 2:
                     {

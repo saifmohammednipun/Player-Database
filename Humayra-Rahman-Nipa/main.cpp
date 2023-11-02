@@ -1,8 +1,10 @@
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <iomanip>
 using namespace std;
+
 
 class Player
 {
@@ -51,13 +53,13 @@ void searchPlayerDataByPlayerName(string targetPlayerName);
  void searchPlayerDataByRole(string targetRole);
  void searchPlayerDataByBattingStyle(string targetBattingStyle);
 void searchPlayerDataByBowlingStyle(string targetBowlingStyle);
-// void searchPlayerDataByMatchesPlayed(int targetMatchesPlayed);
-// void searchPlayerDataByRunsScored(int targetRunsScored);
-// void searchPlayerDataByWicketsTaken(int targetWicketsTaken);
-// void searchPlayerDataByCatchesTaken(int targetCatchesTaken);
-// void searchPlayerDataByBattingAverage(float targetBattingAverage);
-// void searchPlayerDataByBowlingAverage(float targetBowlingAverage);
-// void searchPlayerDataByStrikeRate(int targetStrikeRate);
+void searchPlayerDataByMatchesPlayed(int targetMatchesPlayed);
+void searchPlayerDataByRunsScored(int targetRunsScored);
+ void searchPlayerDataByWicketsTaken(int targetWicketsTaken);
+void searchPlayerDataByCatchesTaken(int targetCatchesTaken);
+void searchPlayerDataByBattingAverage(float targetBattingAverage);
+void searchPlayerDataByBowlingAverage(float targetBowlingAverage);
+void searchPlayerDataByStrikeRate(int targetStrikeRate);
 
 
 
@@ -199,7 +201,7 @@ int main()
                         cout << "\tEnter Age: ";
                         int age;
                         cin >> age;
-                       // searchPlayerDataByAge(age);
+                       searchPlayerDataByAge(age);
                         break;
                     }
                     case 6:
@@ -208,7 +210,7 @@ int main()
                         string role;
                         cin.ignore();
                         getline(cin, role);
-                       // searchPlayerDataByRole(role);
+                       searchPlayerDataByRole(role);
                         break;
                     }
                     case 7:
@@ -217,7 +219,7 @@ int main()
                         string battingStyle;
                         cin.ignore();
                         getline(cin, battingStyle);
-                       // searchPlayerDataByBattingStyle(battingStyle);
+                       searchPlayerDataByBattingStyle(battingStyle);
                         break;
                     }
                     case 8:
@@ -226,7 +228,7 @@ int main()
                         string bowlingStyle;
                         cin.ignore();
                         getline(cin, bowlingStyle);
-                        //searchPlayerDataByBowlingStyle(bowlingStyle);
+                        searchPlayerDataByBowlingStyle(bowlingStyle);
                         break;
                     }
                     case 9:
@@ -234,7 +236,7 @@ int main()
                         cout << "\tEnter Matches Played: ";
                         int matchesPlayed;
                         cin >> matchesPlayed;
-                        //searchPlayerDataByMatchesPlayed(matchesPlayed);
+                        searchPlayerDataByMatchesPlayed(matchesPlayed);
                         break;
                     }
                     case 10:
@@ -242,7 +244,7 @@ int main()
                         cout << "\tEnter Runs Scored: ";
                         int runsScored;
                         cin >> runsScored;
-                        //searchPlayerDataByRunsScored(runsScored);
+                        searchPlayerDataByRunsScored(runsScored);
                         break;
                     }
                     case 11:
@@ -250,7 +252,7 @@ int main()
                         cout << "\tEnter Wickets Taken: ";
                         int wicketsTaken;
                         cin >> wicketsTaken;
-                       // searchPlayerDataByWicketsTaken(wicketsTaken);
+                       searchPlayerDataByWicketsTaken(wicketsTaken);
                         break;
                     }
                     case 12:
@@ -258,7 +260,7 @@ int main()
                         cout << "\tEnter Catches Taken: ";
                         int catchesTaken;
                         cin >> catchesTaken;
-                       // searchPlayerDataByCatchesTaken(catchesTaken);
+                       searchPlayerDataByCatchesTaken(catchesTaken);
                         break;
                     }
                     case 13:
@@ -266,7 +268,7 @@ int main()
                         cout << "\tEnter Batting Average: ";
                         float battingAverage;
                         cin >> battingAverage;
-                        //searchPlayerDataByBattingAverage(battingAverage);
+                        searchPlayerDataByBattingAverage(battingAverage);
                         break;
                     }
                     case 14:
@@ -274,7 +276,7 @@ int main()
                         cout << "\tEnter Bowling Average: ";
                         float bowlingAverage;
                         cin >> bowlingAverage;
-                       // searchPlayerDataByBowlingAverage(bowlingAverage);
+                       searchPlayerDataByBowlingAverage(bowlingAverage);
                         break;
                     }
                     case 15:
@@ -282,7 +284,7 @@ int main()
                         cout << "\tEnter Strike Rate: ";
                         int strikeRate;
                         cin >> strikeRate;
-                       // searchPlayerDataByStrikeRate(strikeRate);
+                       searchPlayerDataByStrikeRate(strikeRate);
                         break;
                     }
                     case 0 : break;
@@ -820,5 +822,228 @@ void searchPlayerDataByDateOfBirth(string targetDateOfBirth)
     if (!found)
     {
         cout << "No players found with this date of birth" << targetDateOfBirth<< endl;
+    }
+}
+
+void searchPlayerDataByAge(int targetAge)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->age == targetAge)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this age" << targetAge<< endl;
+    }
+}
+void searchPlayerDataByRole(string targetRole)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->role == targetRole)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this role" << targetRole << endl;
+    }
+}
+
+
+void searchPlayerDataByBattingStyle(string targetBattingStyle)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->batting_style == targetBattingStyle)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this batting style" << targetBattingStyle << endl;
+    }
+}
+void searchPlayerDataByBowlingStyle(string targetBowlingStyle)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->bowling_style == targetBowlingStyle)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this bowling style" << targetBowlingStyle << endl;
+    }
+}
+void searchPlayerDataByMatchesPlayed(int targetMatchesPlayed)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->matches_played == targetMatchesPlayed)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this matches" << targetMatchesPlayed << endl;
+    }
+}
+void searchPlayerDataByRunsScored(int targetRunsScored)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->runs_scored == targetRunsScored)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this scored" << targetRunsScored << endl;
+    }
+}
+void searchPlayerDataByWicketsTaken(int targetWicketsTaken)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->wickets_taken == targetWicketsTaken)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this wickets taken" << targetWicketsTaken << endl;
+    }
+}
+void searchPlayerDataByCatchesTaken(int targetCatchesTaken)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->catches_taken == targetCatchesTaken)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this catches taken" << targetCatchesTaken << endl;
+    }
+}
+void searchPlayerDataByBattingAverage(float targetBattingAverage)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->batting_average == targetBattingAverage)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this batting average" << targetBattingAverage << endl;
+    }
+}
+void searchPlayerDataByBowlingAverage(float targetBowlingAverage)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->bowling_average == targetBowlingAverage)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this bowling average" << targetBowlingAverage << endl;
+    }
+}
+void searchPlayerDataByStrikeRate(int targetStrikeRate)
+{
+    Player* current = head;
+    bool found = false;
+
+    while (current != NULL) //to traverse the whole linked list until the last node
+    {
+        if (current->strike_rate == targetStrikeRate)
+        {
+            found = true;
+            printPlayerData(current); //printing the player data
+        }
+        current = current->next;  //holding the next node's address-> keep traversing until found the exact node
+    }
+
+    if (!found)
+    {
+        cout << "No players found with this strike rate" << targetStrikeRate << endl;
     }
 }

@@ -81,7 +81,14 @@ void deletePlayerDataFromEnd(Player* tail);
 void deletePlayerDataFromPosition(Player* player, int position);
 
 // 6. Sort Cricketer Information
-void sortPlayerDataByPlayerID(Player* head);
+void sortPlayerDataByPlayerID();
+void sortPlayerDataByCountry();
+void sortPlayerDataByAge();
+void sortPlayerDataByMatchesPlayed();
+void sortPlayerDataByRunsScored();
+void sortPlayerDataByWicketsTaken();
+void sortPlayerDataByCatchesTaken();
+void sortPlayerDataByStrikeRate();
 
 
 int main()
@@ -465,6 +472,7 @@ int main()
                 cout<<"\tSort Player Information"<<endl<<endl;  
                 cout<<"\t1. Sort Cricketers by PlayerID" <<endl;
                 cout<<"\t2. Sort Cricketers by Country" <<endl;
+                cout<<"\t3. Sort Cricketer by Age " <<endl;
                 cout<<"\t3. Sort Cricketer by Match Played " <<endl;
                 cout<<"\t4. Sort Cricketer by Run Scored"<<endl;
                 cout<<"\t5. Sort Cricketer by Wickets Taken" <<endl;
@@ -479,17 +487,51 @@ int main()
                     case 1:
                     {
                         
-                        sortPlayerDataByPlayerID(head);
-                        cout<<"Sort Cricketers by PlayerID"<<endl;
+                        sortPlayerDataByPlayerID();
+                        cout<<"Sorted Cricketers by PlayerID Successfully."<<endl;
                         
                     }break;
                     case 2:
                     {
+                        sortPlayerDataByCountry();
+                        cout<<"Sorted Cricketers by Country Successfully."<<endl;
                         break;
                     }
                     case 3:
                     {
-                       break;
+                        sortPlayerDataByAge();
+                        cout<<"Sorted Cricketers by Age Successfully."<<endl;
+                        break;
+                    }
+                    case 4:
+                    {
+                        sortPlayerDataByMatchesPlayed();
+                        cout<<"Sorted Cricketers by Matches Played Successfully."<<endl;
+                        break;
+                    }
+                    case 5:
+                    {
+                        sortPlayerDataByRunsScored();
+                        cout<<"Sorted Cricketers by Runs Scored Successfully."<<endl;
+                        break;
+                    }
+                    case 6:
+                    {
+                        sortPlayerDataByWicketsTaken();
+                        cout<<"Sorted Cricketers by Wickets Taken Successfully."<<endl;
+                        break;
+                    }
+                    case 7:
+                    {
+                        sortPlayerDataByCatchesTaken();
+                        cout<<"Sorted Cricketers by Catches Taken Successfully."<<endl;
+                        break;
+                    }
+                    case 8:
+                    {
+                        sortPlayerDataByStrikeRate();
+                        cout<<"Sorted Cricketers by Strike Rate Successfully."<<endl;
+                        break;
                     }
                     case 0: break;
                     default: cout << "\tInvalid input. Please try again." << endl;
@@ -1590,3 +1632,372 @@ void deletePlayerDataFromPosition(Player* head, int position)
     delete current;
 }
 
+//Sort Player Data by Player ID
+void sortPlayerDataByPlayerID() {
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->player_id < sortedList->player_id) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->player_id < current->player_id) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+//Sort Player Data by Country
+void sortPlayerDataByPlayerCountry()
+{
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->country < sortedList->country) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->country < current->country) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+//Sort Player Data by Age
+void sortPlayerDataByAge()
+{
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->age < sortedList->age) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->age < current->age) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+
+//Sort Player Data by Matches Played
+void sortPlayerDataByMatchesPlayed()
+{   
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->matches_played < sortedList->matches_played) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->matches_played < current->matches_played) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+//Sort Player Data by Runs Scored
+void sortPlayerDataByRunsScored()
+{
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->runs_scored < sortedList->runs_scored) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->runs_scored < current->runs_scored) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+//Sort Player Data by Wickets Taken
+void sortPlayerDataByWicketsTaken()
+{
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->wickets_taken < sortedList->wickets_taken) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->wickets_taken < current->wickets_taken) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+//Sort Player Data by Catches Taken
+void sortPlayerDataByCatchesTaken()
+{
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->catches_taken < sortedList->catches_taken) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->catches_taken < current->catches_taken) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+//Sort Player Data by Batting Average
+void sortPlayerDataByBattingAverage()
+{
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->batting_average < sortedList->batting_average) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->batting_average < current->batting_average) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+//Sort Player Data by Bowling Average
+void sortPlayerDataByBowlingAverage()
+{
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->bowling_average < sortedList->bowling_average) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->bowling_average < current->bowling_average) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}
+
+//Sort Player Data by Strike Rate
+void sortPlayerDataByStrikeRate()
+{
+    if (head == NULL) {
+        // Empty list, nothing to sort
+        return;
+    }
+
+    Player* sortedList = NULL; // Initialize a new list to store sorted players
+
+    while (head != NULL) {
+        Player* current = head;
+        head = head->next;
+
+        if (sortedList == NULL || current->strike_rate < sortedList->strike_rate) {
+            // Insert the current player at the beginning of the sorted list
+            current->next = sortedList;
+            sortedList = current;
+        } else {
+            // Find the appropriate position to insert the current player
+            Player* temp = sortedList;
+            while (temp->next != NULL && temp->next->strike_rate < current->strike_rate) {
+                temp = temp->next;
+            }
+            current->next = temp->next;
+            temp->next = current;
+        }
+    }
+
+    // Update the head and tail pointers to the sorted list
+    head = sortedList;
+    tail = head;
+    while (tail->next != NULL) {
+        tail = tail->next;
+    }
+}

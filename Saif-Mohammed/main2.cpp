@@ -62,7 +62,7 @@ void searchPlayerDataByBowlingAverage(float targetBowlingAverage);
 void searchPlayerDataByStrikeRate(int targetStrikeRate);
 
 // 3. Add Cricketer Information (Insertion)
-void addNewPlayerDataAtFront(Player* player, Player* head);
+void addNewPlayerDataAtFront(Player* player, Player*& head);
 void addNewPlayerDataAtEnd(Player* player, Player* tail);
 void addNewPlayerDataAtPosition(Player* player, int position);
 
@@ -337,6 +337,8 @@ int main()
                         if (newPlayer != NULL)
                         {
                             addNewPlayerDataAtFront(newPlayer, head);
+                            clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
+                            showAllPlayerData(head);
                             cout<<"New Player Data Added Successfully at the Front"<<endl;
                         }
                         break;
@@ -347,6 +349,8 @@ int main()
                         if (newPlayer != NULL)
                         {
                             addNewPlayerDataAtEnd(newPlayer, tail);
+                            clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
+                            showAllPlayerData(head);
                             cout<<"New Player Data Added Successfully at the End"<<endl;
                         }
                         break;
@@ -360,6 +364,8 @@ int main()
                             int position;
                             cin >> position;
                             addNewPlayerDataAtPosition(newPlayer, position);
+                            clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
+                            showAllPlayerData(head);
                             cout<<"Player Data Added Successfully at "<<position<<" Position"<<endl;
                         }
                         break;
@@ -652,11 +658,13 @@ Player* createPlayerData()
         cout << "Enter Catches Taken: ";
         cin >> newPlayer->catches_taken;
 
-        cout << "Enter Batting Average: ";
-        cin >> newPlayer->batting_average;
+        cout << "Player Batting Average: ";
+        newPlayer->batting_average = newPlayer->runs_scored / newPlayer->matches_played;
+        cout<< newPlayer->batting_average<<endl;
 
-        cout << "Enter Bowling Average: ";
-        cin >> newPlayer->bowling_average;
+        cout << "Player Bowling Average: ";
+        newPlayer->bowling_average = newPlayer->matches_played / newPlayer->wickets_taken;
+        cout<< newPlayer->bowling_average<<endl;
 
         cout << "Enter Strike Rate: ";
         cin >> newPlayer->strike_rate;
@@ -1246,19 +1254,10 @@ void searchPlayerDataByStrikeRate(int targetStrikeRate)
 
 
 //Add New Player Data at front
-void addNewPlayerDataAtFront(Player* player, Player* head)
+void addNewPlayerDataAtFront(Player* player, Player*& head)
 {
-    if (head == NULL)
-    {
-        head = player;
-        tail = player;
-    }
-    else
-    {
-        // Time Complexity - Big O(1)
-        player->next = head; // Make the new player point to the current head
-        head = player; // Make the new player the new head
-    }
+    player->next = head; // Make the new player point to the current head
+    head = player; // Update the head to the new player
 }
 
 
@@ -1351,6 +1350,8 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                 cout<<"\tEnter Instruction: ";
                 int input;
                 cin>>input;
+
+                current->batting_average = current->runs_scored / (2*current->matches_played);
                 switch(input)
                 {
                     // You can't directly change the Player ID as it's unique.
@@ -1464,20 +1465,18 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                     }
                     case 13:
                     {
-                        cout << "Enter Batting Average: ";
-                        float battingAverage;
-                        cin >> battingAverage;
-                        current->batting_average=battingAverage;
-                        cout<<"Batting Average "<<battingAverage<<" updated successfully."<<endl;
+                        cout << "Player Batting Average: ";
+                        current->batting_average = current->runs_scored / (2*current->matches_played);
+                        cout<< current->batting_average <<endl<<"Updated successfully."<<endl;
                         break;
                     }
                     case 14:
                     {
                         cout << "Enter Bowling Average: ";
-                        float bowlingAverage;
+                        int bowlingAverage;
                         cin >> bowlingAverage;
                         current->bowling_average=bowlingAverage;
-                        cout<<"Bowling Average "<<bowlingAverage<<" updated successfully."<<endl;
+                        cout<<current->bowling_average<<endl<<"Updated successfully."<<endl;
                         break;
                     }
                     case 15:

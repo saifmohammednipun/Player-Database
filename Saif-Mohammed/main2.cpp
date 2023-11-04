@@ -383,7 +383,7 @@ int main()
             int targetPlayerID;
             cout << "Enter Player ID you want to update: ";
             cin >> targetPlayerID;
-            //clearFileBeforWriting("/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
+
             updatePlayerInformation(head,targetPlayerID); 
 
             break;

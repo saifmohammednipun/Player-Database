@@ -6,6 +6,7 @@ using namespace std;
 
 struct Player
 {
+    // Player data
     int player_id;
     string country;
     string player_name;
@@ -22,11 +23,11 @@ struct Player
     float bowling_average;
     int strike_rate;
 
-    Player* next;
+    Player* next; // Pointer to the next Player
 };
 
-Player* head = NULL;
-Player* tail = NULL;
+Player* head = NULL; // Pointer to the first Player
+Player* tail = NULL; // Pointer to the last Player
 
 // Create New player data
 Player* createPlayerData();
@@ -39,12 +40,13 @@ void clearFileBeforWriting(string filename);
 
 // Write updated player data in to file 
 void writePlayerToCSV(Player* player, string filename);
+void writePlayerToTxT(Player* player, string filename);
 
 //  1. Show Cricketer List
-void showAllPlayerData(Player* head);
+void showAllPlayerData(Player* head); 
 void showIndividualPlayerData(Player* head,int playerID);
 
-// 2. Search Cricketer Information
+// 2. Search Cricketer Information - Linear Search Algorithm - Big O(n)
 void searchPlayerDataByPlayerID(int targetPlayerID);
 void searchPlayerDataByCountry(string targetCountry);
 void searchPlayerDataByPlayerName(string targetPlayerName);
@@ -79,7 +81,7 @@ void deletePlayerDataFromFront(Player* head);
 void deletePlayerDataFromEnd(Player* tail);
 void deletePlayerDataFromPosition(Player* player, int position);
 
-// 6. Sort Cricketer Information
+// 6. Sort Cricketer Information - Insertion Sort Algorithm - Big O(n^2)
 void sortPlayerDataByPlayerID();
 void sortPlayerDataByCountry();
 void sortPlayerDataByAge();
@@ -609,16 +611,18 @@ Player* createPlayerData()
 
     // Check if a player with the same ID already exists
     Player* current = head;
+    
     bool isDuplicate = false;
-    while (current != NULL)
+    
+    while (current != NULL) // Traverse the linked list
     {
-        if (current->player_id == newPlayer->player_id && current->player_id<=0)
+        if (current->player_id == newPlayer->player_id || current->player_id<=0)
         {
             isDuplicate = true;
             cout << "A player with the same ID already exists." << endl;
             break;
         }
-        current = current->next;
+        current = current->next; // Move to the next Player
     }
 
     if (!isDuplicate)

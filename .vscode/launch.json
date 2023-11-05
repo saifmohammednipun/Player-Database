@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/saifmohammed/Desktop/Player-Database/Saif-Mohammed",
+      "program": "/Users/saifmohammed/Desktop/Player-Database/Saif-Mohammed/build/Debug/outDebug"
+    }
+  ]
+}

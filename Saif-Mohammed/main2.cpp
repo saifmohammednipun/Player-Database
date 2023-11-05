@@ -4,9 +4,10 @@
 #include <iomanip>
 using namespace std;
 
-struct Player
+struct Player // Player Structure
 {
-    int player_id;
+    // values
+    int player_id; 
     string country;
     string player_name;
     string date_of_birth;
@@ -22,11 +23,11 @@ struct Player
     float bowling_average;
     int strike_rate;
 
-    Player* next;
+    Player* next; // Pointer to the next Player
 };
 
-Player* head = NULL;
-Player* tail = NULL;
+Player* head = NULL;  // Pointer to the first Player
+Player* tail = NULL;  // Pointer to the last Player
 
 // Create New player data
 Player* createPlayerData();
@@ -599,7 +600,7 @@ int main()
     return 0;
 }
 
-
+// Function to create a new Player
 Player* createPlayerData()
 {
     Player* newPlayer = new Player; // Create a new dynamic Player object
@@ -615,7 +616,7 @@ Player* createPlayerData()
         if (current->player_id == newPlayer->player_id && current->player_id<=0)
         {
             isDuplicate = true;
-            cout << "A player with the same ID already exists." << endl;
+            cout << "A player with the same ID already exists, or Player id is less than 0" << endl;
             break;
         }
         current = current->next;
@@ -681,7 +682,7 @@ Player* createPlayerData()
     return newPlayer;
 }
 
-
+// read player data from file
 void readPlayerDataFromFile()
 {
     ifstream inputFile;
@@ -696,12 +697,12 @@ void readPlayerDataFromFile()
     string line;
     int count = 0;
 
-    while (getline(inputFile, line))
+    while (getline(inputFile, line)) // Read a line from the file
     {
         if (count >= 1)
         {
             Player* player = new Player;
-            stringstream ss(line);
+            stringstream ss(line); // Convert the line to a stringstream
 
             ss >> player->player_id;
             ss.ignore(); // Ignore the comma
@@ -729,12 +730,12 @@ void readPlayerDataFromFile()
 
             player->next = NULL;
 
-            if (head == NULL)
+            if (head == NULL) // If the list is empty
             {
                 head = player;
                 tail = player;
             }
-            else
+            else // If the list is not empty
             {
                 tail->next = player;
                 tail = player;
@@ -851,11 +852,13 @@ void showAllPlayerData(Player* head)
 
     cout << "Player Data:" << endl;
     cout<<"ID"<<setw(15)<< "Country"<<setw(22)<<"Player Name"<<setw(16)<<"Date of Birth"<<setw(6)<<"Age"<<setw(22)<<"Role"<<setw(20)<<"Batting Style"<<setw(20)<<"Bowling Style"<<setw(15)<<"M.P."<<setw(9)<<"Runs"<<setw(10)<<"Wickets"<<setw(10)<<"Catches"<<setw(10)<<"Bat Avg"<<setw(10)<<"Bowl Avg"<<setw(10)<<"SR"<<endl;
-    while (current != NULL)
+    
+    while (current != NULL) // Traverse the list Big O(n)
     {
         printPlayerData(current);
         writePlayerToCSV(current, "/Users/saifmohammed/Desktop/Player-Database/Modified-Player-Database-CWC-2023.csv");
-        current = current->next;
+        
+        current = current->next; 
     }
 }
 
@@ -1502,7 +1505,7 @@ void updatePlayerInformation(Player* head, int targetPlayerID)
                 }
             }
         }
-        current = current->next;
+        current = current->next; // Move to the next node
     }
 
     if (!found)
@@ -1521,9 +1524,9 @@ void deletePlayerDatabase()
 
     while (current != NULL)
     {
-        next = current->next;
-        delete current;
-        current = next;
+        next = current->next; // Store the next node
+        delete current; // Delete the current node
+        current = next; // Move to the next node
     }
 
     head = NULL;
@@ -1542,24 +1545,24 @@ void deletePlayerDataByPlayerID(int targetPlayerID)
         if (current->player_id == targetPlayerID)
         {
             found = true;
-            if (previous == NULL)
+            if (previous == NULL) // If the node to be deleted is the head
             {
-                head = current->next;
-                delete current;
-                current = head;
+                head = current->next; // Make the next node the new head
+                delete current; // Delete the current node
+                current = head; // Move to the new head
             }
             else
             {
-                previous->next = current->next;
-                delete current;
+                previous->next = current->next; // Make the previous node point to the node after the current node
+                delete current; 
                 current = previous->next;
             }
         }
         else
         {
             previous = current;
-            current = current->next;
-        }
+            current = current->next; // Move to the next node
+        } 
     }
 
     if (!found)
@@ -1650,8 +1653,8 @@ void deletePlayerDataFromFront(Player* head)
     }
 
     Player* temp = head;
-    head = head->next;
-    delete temp;
+    head = head->next; // Make the next node the new head
+    delete temp; // Delete the current head
 }
 
 void deletePlayerDataFromEnd(Player* head)
@@ -1675,7 +1678,7 @@ void deletePlayerDataFromEnd(Player* head)
         current = current->next;
     }
 
-    delete current;
+    delete current; 
     previous->next = nullptr;
 }
 
@@ -1707,7 +1710,7 @@ void deletePlayerDataFromPosition(Player* head, int position)
         return;
     }
 
-    previous->next = current->next;
+    previous->next = current->next;  
     delete current;
 }
 

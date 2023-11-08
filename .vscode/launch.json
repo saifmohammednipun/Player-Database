@@ -6,8 +6,8 @@
       "type": "lldb",
       "request": "launch",
       "args": [],
-      "cwd": "/Users/saifmohammed/Desktop/Player-Database/Saif-Mohammed",
-      "program": "/Users/saifmohammed/Desktop/Player-Database/Saif-Mohammed/build/Debug/outDebug"
+      "cwd": "/Users/saifmohammed/Desktop/Player-Database/Saif-Mohammed-Nipun",
+      "program": "/Users/saifmohammed/Desktop/Player-Database/Saif-Mohammed-Nipun/build/Debug/outDebug"
     }
   ]
 }

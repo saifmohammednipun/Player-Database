@@ -17,4 +17,5 @@ delete player's information who are taking part in the World Cup 2023.
 - Database: File Handling
 
 ## Issues
-- Case Insensetive: Lamda Function 
+- Case Insensetive: Lamda Function
+- File Hnadling: Avoid Multiple File
